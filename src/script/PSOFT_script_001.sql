@@ -52,7 +52,7 @@ CREATE TABLE cliente
 	email VARCHAR(50) NOT NULL,
 	endereco VARCHAR(50) NULL,
 	identidade VARCHAR(50) NOT NULL,
-	preferencial BIT NOT NULL DEFAULT 0,
+	preferencial BIT NOT NULL,
 	pontos INTEGER NULL,
 	CONSTRAINT PK_cliente PRIMARY KEY (id)
 );
