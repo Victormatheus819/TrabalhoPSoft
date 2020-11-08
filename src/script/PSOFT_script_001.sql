@@ -86,7 +86,7 @@ CREATE TABLE reclamacao
     id SERIAL NOT NULL,
     id_cliente INTEGER NOT NULL,
     comentario VARCHAR(100) NOT NULL,
-    data DATA NOT NULL,
+    data DATE NOT NULL,
     CONSTRAINT PK_reclamacao PRIMARY KEY (id)
 );
 
