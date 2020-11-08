@@ -7,8 +7,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class Fornecedor {
+
     @Id
-    @Column (name ="") @Getter @Setter private String nome ;
+    @Column (name = "id") 
+    @Getter private int id;
+
+    @Column (name ="nome") 
+    @Getter @Setter private String nome ;
     
-    @Column (name ="") @Getter @Setter private String endereco ;
+    @Column (name ="endereco") 
+    @Getter @Setter private String endereco ;
+
 }

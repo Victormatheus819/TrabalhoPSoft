@@ -18,5 +18,6 @@ public class Usuario {
   @Column (name ="") @Getter @Setter private String senha;
   
   @Column (name ="") @Getter @Setter private String endereço;
+  
   @Column (name ="") @Getter @Setter private boolean ativo;
 }
