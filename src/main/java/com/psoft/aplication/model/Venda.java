@@ -1,4 +1,4 @@
-package com.psoft.model;
+package com.psoft.aplication.model;
 
 import java.util.Date;
 import java.util.List;

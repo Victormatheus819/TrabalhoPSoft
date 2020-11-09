@@ -1,4 +1,4 @@
-package com.psoft.model;
+package com.psoft.aplication.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
