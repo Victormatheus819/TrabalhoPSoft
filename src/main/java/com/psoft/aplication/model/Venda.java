@@ -31,19 +31,14 @@ public class Venda {
 
     @JoinColumn (name ="id_vendedor") @Getter @Setter private Vendedor vendedor;
     
-    @ManyToMany(cascade=CascadeType.ALL)
-    @JoinTable(
-        name="item_venda",
-        joinColumns={ @JoinColumn(name="id_venda", referencedColumnName="id") },
-        inverseJoinColumns={ @JoinColumn(name="id_item") }
-    ) @Getter @Setter private List<ItemVenda> itemVenda;
+    //@ManyToMany(cascade=CascadeType.ALL)
+    //@JoinTable(
+    //    name="item_venda",
+    //    joinColumns={ @JoinColumn(name="id_venda", referencedColumnName="id") },
+    //    inverseJoinColumns={ @JoinColumn(name="id_item") }
+    //) @Getter @Setter private List<ItemVenda> itemVenda;
 
     @OneToMany
     @JoinColumn(name = "id_troca") @Getter @Setter private List<Troca> troca;
-
-   public float calculaValorTotal (){return 0;};
-   public void  gerarNotaFiscal (){};
-   public float calculaDesconto () {return 0;};
-   public int   gerarPontos (){ return 0;};
     
 }

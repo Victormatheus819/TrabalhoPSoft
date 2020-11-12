@@ -40,9 +40,5 @@ public  class Cliente {
   
   @Column(name ="pontos") 
   @Getter @Setter private int  pontos;
-  
-  @ManyToOne( fetch = FetchType.LAZY )
-  @JoinColumn (name ="reclamacao") @Getter @Setter private List<Reclamacao> reclamacoes;
-
  
 }
