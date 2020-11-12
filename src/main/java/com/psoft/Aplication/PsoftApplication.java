@@ -1,4 +1,4 @@
-package com.psoft.Aplication;
+package com.psoft.aplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -9,7 +9,7 @@ import lombok.Setter;
 public class Fornecedor {
 
     @Id
-    @Column (name = "id") 
+    @Column (name ="id") 
     @Getter private int id;
 
     @Column (name ="nome") 
