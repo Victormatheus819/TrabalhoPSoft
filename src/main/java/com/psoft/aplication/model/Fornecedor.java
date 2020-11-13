@@ -12,14 +12,14 @@ import lombok.Setter;
 @Table (name="fornecedor")
 public class Fornecedor {
 
-    @Id
-    @Column (name ="id") 
-    @Getter private int id;
-
-    @Column (name ="nome") 
-    @Getter @Setter private String nome ;
-    
-    @Column (name ="endereco") 
-    @Getter @Setter private String endereco ;
+    @Id  
+    @Column (name ="id")
+    @Getter private int id ;
+        
+    @Column (name ="nome")
+    @Getter @Setter private String nome;
+        
+    @Column (name ="senha") 
+    @Getter @Setter private String endereco;
 
 }

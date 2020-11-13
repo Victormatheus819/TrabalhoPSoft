@@ -9,13 +9,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table( name="tipo_pagamento")
-public class TipoPagamento {
+@Table (name="nota_fiscal")
+public class NotaFiscal {
     
     @Id
-    @Column( name = "id")
+    @Column (name = "id")
     @Getter private int id;
 
-    @Column( name = "metodo" )
-    @Getter @Setter private String metodo;
+    @Column (name = "codigo") 
+    @Getter @Setter private String codigo;
+
 }

@@ -1,5 +1,7 @@
 package com.psoft.aplication.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,22 +13,21 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table (name= "produto_fornecedor")
-public class ProdutoFornecedor {
-
+@Table (name= "promocao")
+public class Promocao {
+    
     @Id
     @Column (name = "id") 
     @Getter private int id;
 
     @ManyToOne
-    @JoinColumn(name = "id_produto") 
+    @JoinColumn (name = "id_produto") 
     @Getter @Setter private Produto produto;
 
-    @ManyToOne
-    @JoinColumn (name = "id_fornecedor") 
-    @Getter @Setter private Fornecedor fornecedor;
+    @Column (name = "data_inicial") 
+    @Getter @Setter private Date dataInicial;
 
-    @Column (name = "valor") 
-    @Getter @Setter private Double valor;
+    @Column (name = "data_final") 
+    @Getter @Setter private Date dataFinal;
     
 }

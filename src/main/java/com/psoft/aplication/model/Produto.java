@@ -20,13 +20,13 @@ public class Produto {
     @Getter @Setter private String nome ;
 
     @Column (name ="codigo_identificacao") 
-    @Getter @Setter private String codigo_identificacao;
+    @Getter @Setter private Integer codigo_identificacao;
 
     @Column (name ="codigo_barras") 
     @Getter @Setter private  String codigo_barras ;
 
     @Column (name ="preco") 
-    @Getter @Setter private float preco;
+    @Getter @Setter private Double preco;
 
     @Column (name ="quantidade_estoque") 
     @Getter @Setter private int quantidade;
