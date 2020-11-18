@@ -1,13 +1,14 @@
-package com.psoft.service;
+package com.psoft.aplication.service;
 
 import java.util.List;
 import java.util.Optional;
 
 import com.psoft.aplication.model.Cliente;
-import com.psoft.dao.ClienteDao;
+import com.psoft.aplication.dao.ClienteDao;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Service;
+@Service
 public class ClienteService {
     @Autowired
     private ClienteDao dao;
