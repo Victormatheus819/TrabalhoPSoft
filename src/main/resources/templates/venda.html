@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Venda</title>
+    <link rel="stylesheet" th:href="@{/css/venda.css}" type="text/css">
+</head>
+<body id="venda">
+
+	<div class="container">
+
+		<div class="content">
+
+			<form action="" class="row">
+
+				<div class="col" id="left-col">
+
+					<div id="insercaoProdutos" class="row">
+
+						<div id="codigoContainer" class="col">
+							<label for="codigo">Código</label>
+							<input type="text" name="codigo" id="codigo">
+						</div>
+
+						<div class="col">
+							<label for="quant">Quantidade</label>
+							<input type="number" name="quant" id="quant">
+						</div>
+
+						<div>
+							<button id="btnAdicionar"> Adicionar </button>
+						</div>
+
+					</div>
+					<div id="listaProdutosContainer" class="col">
+
+						<span>Lista de Produtos</span>
+						<div id="listaProdutos">
+						</div>
+
+					</div>
+					<div>
+						<span>Subtotal: R$ </span> <span>0,00</span>
+					</div>
+				</div>
+
+				<div class="col" id="right-col">
+
+					<div class="col" >
+						<button type="reset" id="btnCancelar"> Cancelar </button>
+						<button type="submit" id="btnConcluir"> Concluir </button>
+					</div>
+
+				</div>
+
+			</form>
+
+		</div>
+
+	</div>
+
+</body>
+</html>

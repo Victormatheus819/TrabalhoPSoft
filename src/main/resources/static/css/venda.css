@@ -1,0 +1,70 @@
+@import 'default.css';
+
+form {
+	display: flex;
+	position: relative;
+	flex: 1;
+	margin: 5%;
+}
+
+span, label {
+	margin: 10px 0;
+}
+
+.content {
+	display: flex;
+	position: relative;
+	background-color: #cccccc;
+	width: 80vw;
+	height: 80vh;
+}
+
+#left-col {
+	flex: 3;
+}
+
+#right-col {
+	flex: 1;
+	align-items: flex-end;
+	justify-content: flex-end;
+}
+
+#insercaoProdutos {
+	flex: 1;
+	align-items: stretch;
+	width: 100%;
+}
+
+#insercaoProdutos input {
+	flex: 1;
+}
+
+#codigoContainer {
+	flex: 1;
+	margin: 0 20px 0 0;
+}
+
+#listaProdutosContainer {
+	flex: 4;
+}
+
+#listaProdutos {
+	flex: 1;
+	background-color: white;
+}
+
+#right-col button{
+	margin: 10px;
+}
+
+#btnAdicionar {
+	margin: 0 0 0 20px;
+}
+
+#btnConcluir {
+	background-color: var(--sucess-color);
+}
+
+#btnCancelar {
+	background-color: var(--danger-color);
+}
