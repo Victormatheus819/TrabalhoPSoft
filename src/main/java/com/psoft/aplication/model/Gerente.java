@@ -23,7 +23,7 @@ public class Gerente  {
   @Getter @Setter private String nome;
     
   @Column (name ="codigo") 
-  @Getter @Setter private Integer codigo;
+  @Getter @Setter private String codigo;
     
   @Column (name ="ativo") 
   @Getter @Setter private boolean ativo;
