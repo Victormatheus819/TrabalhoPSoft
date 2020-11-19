@@ -34,7 +34,7 @@ public  class Cliente {
   @Getter @Setter private String identidade;
  
   @Column(name ="preferencial") 
-  @Getter @Setter private boolean peferencial;
+  @Getter @Setter private boolean preferencial;
   
   @Column(name ="pontos") 
   @Getter @Setter private Integer pontos;

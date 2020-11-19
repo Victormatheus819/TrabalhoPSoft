@@ -20,8 +20,7 @@ public class ClienteController {
     
     @RequestMapping(value = "/teste", method = RequestMethod.POST)
     public String form(Cliente cliente){
-        System.out.println(cliente.getEndereco());
-        System.out.println (cliente.isPeferencial());
+
         dao.save(cliente);
         return "index";  
     } 
