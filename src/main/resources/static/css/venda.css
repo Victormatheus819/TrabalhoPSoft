@@ -1,5 +1,14 @@
 @import 'default.css';
 
+header {
+	background-color: #14274e;
+	height: 6vh;
+	font-family: 'Open Sans', sans-serif;
+	color: #ccc;
+	display: flex;
+	align-items: center;
+	padding-left: 1vw;
+}
 form {
 	display: flex;
 	position: relative;
@@ -9,14 +18,29 @@ form {
 
 span, label {
 	margin: 10px 0;
+	font-family: 'Open Sans', sans-serif;
+}
+
+input {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+.container {
+	height: 94vh;
+	background-color: #fff;
 }
 
 .content {
-	display: flex;
-	position: relative;
-	background-color: #cccccc;
+	background-color: #f1f6f9;
 	width: 80vw;
 	height: 80vh;
+	border-radius: 10px;
 }
 
 #left-col {
@@ -32,7 +56,6 @@ span, label {
 #insercaoProdutos {
 	flex: 1;
 	align-items: stretch;
-	width: 100%;
 }
 
 #insercaoProdutos input {
@@ -58,13 +81,48 @@ span, label {
 }
 
 #btnAdicionar {
-	margin: 0 0 0 20px;
+	width: 100%;
+	background-color: #2849da;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+#btnAdicionar:hover {
+	background-color: #1d3abd;
 }
 
 #btnConcluir {
-	background-color: var(--sucess-color);
+	/* background-color: var(--sucess-color); */
+	width: 100%;
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+#btnConcluir:hover {
+	background-color: #45a049;
 }
 
 #btnCancelar {
-	background-color: var(--danger-color);
+	/* background-color: var(--danger-color); */
+	width: 100%;
+	background-color: #d21313;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+#btnCancelar:hover {
+	background-color: #a20a0a;
 }

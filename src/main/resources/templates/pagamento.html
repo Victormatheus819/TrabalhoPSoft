@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Pagamento</title>
+  
+  <link rel="stylesheet" th:href="@{/css/pagamento.css}" type="text/css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+</head>
+<body id="pagamento">
+  <header>Sistema de controle de vendas - Pagamento</header>
+	<div class="container">
+		<div class="content">
+      <form action="">
+        <label for="cpf">CPF</label>
+        <input type="text" id="cpf" placeholder="Digite o CPF do cliente">
+      
+        <button id="btnBuscar">Buscar</button>
+
+        <label for="pagamento">Forma de pagamento</label>
+        <select id="formaPagamento">
+          <option value="dinheiro">Dinheiro</option>
+          <option value="debito">Cartão de Débito</option>
+          <option value="credito">Cartão de Crédito</option>
+        </select>
+      
+        <button id="btnFinalizar">Finalizar compra</button>
+      </form>
+	</div>
+
+</body>
+</html>
