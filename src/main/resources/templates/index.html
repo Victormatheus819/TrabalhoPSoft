@@ -1,20 +1,35 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
-
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Lojinha do Zé</title>
+	<title>Login</title>
     <link rel="stylesheet" th:href="@{/css/index.css}" type="text/css">
 </head>
+<body id="login">
 
-<body>
-    <div class="login">
-        <div>
-            <a th:href="@{/venda}" >Venda</a>
-            <a href="">Pagamento</a>
-        </div>
-    </div>
+	<div class="container">
+
+		<div class="content">
+
+			<form action="formulario">
+                <h3 class="text-info">Iniciar Sistema</h3>
+                <div class="form-group">
+                    <label for="usuario">Usuario:</label>
+                    <input type="text" name="usuario" id="usuario" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="password" class="text-info">Senha:</label>
+					<input type="text" name="senha" id="senha" class="form-control">
+				</div>
+				<div class="form-group">
+					<button>Logar</button>
+				</div>
+			</form>
+
+		</div>
+
+	</div>
+
 </body>
-
 </html>
