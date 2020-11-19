@@ -1,12 +1,50 @@
+.content{
+	font-family: 'Open Sans', sans-serif;
+	border-radius: 10px;
+}
 .container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 80vw
-	height: 80vh;
-	background-color: #cccccc;
+	width: 40%;
+	height: 90%;
+	background-color: #d3e6f1;
+	margin-top: 25px;
+	padding-bottom: 10%;
+	padding-top: 10%;
+	margin-left: 30%;
+	margin-right: 30%;
 }
-.content {
-	width: 100px;
-	height: 200px
+#botao {
+	width: 50%;
+	height: 20%;
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	font-size: inherit;
+}
+#usuario {
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 8px;
+}
+#senha {
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 8px;
+}
+header {
+	background-color: #14274e;
+	height: 6vh;
+	font-family: 'Open Sans', sans-serif;
+	color: #ccc;
+	display: flex;
+	align-items: center;
+	padding-left: 1vw;
 }
