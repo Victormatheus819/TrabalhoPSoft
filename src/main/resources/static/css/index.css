@@ -1,6 +1,5 @@
 .content{
 	font-family: 'Open Sans', sans-serif;
-	border-radius: 10px;
 }
 .container {
 	display: flex;
@@ -34,7 +33,7 @@
 	border-radius: 8px;
 }
 #senha {
-	padding: 14px 20px;
+	padding: 14px 26px;
 	margin: 8px 0;
 	border: none;
 	border-radius: 8px;
