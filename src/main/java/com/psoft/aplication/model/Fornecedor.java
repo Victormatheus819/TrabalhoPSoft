@@ -22,7 +22,7 @@ public class Fornecedor {
     @Column (name ="nome")
     @Getter @Setter private String nome;
         
-    @Column (name ="senha") 
+    @Column (name ="endereco") 
     @Getter @Setter private String endereco;
 
 }

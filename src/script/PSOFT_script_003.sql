@@ -31,3 +31,10 @@ ALTER TABLE cliente
 
 -- insert na tabela de versionamento
 INSERT INTO db_version(numeracao) VALUES (3);
+
+-- ajuste constraint troca_item
+ALTER TABLE troca_item
+    DROP CONSTRAINT FK_troca_X_item;
+
+ALTER TABLE troca_item 
+    ADD CONSTRAINT FK_troca_X_item FOREIGN KEY (id_troca) REFERENCES troca(id);
