@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.psoft.aplication.dao.ClienteDao;
+import com.psoft.aplication.model.Cliente;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
