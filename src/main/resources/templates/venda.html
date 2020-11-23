@@ -9,6 +9,8 @@
   <link rel="stylesheet" th:href="@{/css/venda.css}" type="text/css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <script type="text/javascript" src="/js/venda.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 </head>
 <body id="venda">
@@ -30,7 +32,7 @@
 						</div>
 
 						<div>
-              <button id="btnAdicionar">Adicionar</button>
+              <button type="submit" id="btnAdicionar">Adicionar</button>
 						</div>
 
 					</div>
@@ -38,9 +40,18 @@
 
 						<span>Lista de Produtos</span>
 						<div id="listaProdutos">
+							<table id="tabela">
+								<thead>
+									<tr>
+										<td>Codigo</td>
+										<td>Produto</td>
+										<td>Valor</td>
+										<td>Ação</td>
+									</tr>
+								</thead>
+								<tbody id="tbody"></tbody>
+							</table>
 						</div>
-
-					</div>
 					<div>
 						<span>Subtotal: R$ </span> <span>0,00</span>
 					</div>

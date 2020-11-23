@@ -51,11 +51,14 @@ input {
 	flex: 1;
 	align-items: flex-end;
 	justify-content: flex-end;
+	margin-top: -20%;
+	margin-right: 10%
 }
 
 #insercaoProdutos {
 	flex: 1;
 	align-items: stretch;
+	width: 80%;
 }
 
 #insercaoProdutos input {
@@ -74,6 +77,7 @@ input {
 #listaProdutos {
 	flex: 1;
 	background-color: white;
+	width: 70%;
 }
 
 #right-col button{
@@ -89,7 +93,7 @@ input {
 	border: none;
 	border-radius: 8px;
 	cursor: pointer;
-	margin-left: 188%;
+	margin-left: 80%;
     margin-top: 33%;
 }
 
@@ -127,4 +131,24 @@ input {
 
 #btnCancelar:hover {
 	background-color: #a20a0a;
+}
+
+#excluir {
+	width: 80%;
+	height: 45%;
+	background-color: #d21313;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+table, th, td {
+	border: 1px solid black;
+}
+
+#tabela {
+	width: 100%;
 }
