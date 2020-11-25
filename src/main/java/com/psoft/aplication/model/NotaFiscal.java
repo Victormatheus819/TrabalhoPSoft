@@ -1,5 +1,7 @@
 package com.psoft.aplication.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,5 +23,8 @@ public class NotaFiscal {
 
     @Column (name = "codigo") 
     @Getter @Setter private String codigo;
+
+    @Column (name ="data") 
+    @Getter @Setter private Date data;
 
 }
