@@ -6,29 +6,38 @@ var produto3 = {codigo: 03, nome: 'Produto3', valor: 59.99};
 var produtos = [produto1, produto2, produto3];
 
 document.addEventListener("DOMContentLoaded", function(){
-    produtos.forEach(adcionarProduto);
+    produtos.forEach(adicionarProduto);
     
 });
 
 function atualizarTabela() {
     document.getElementById('tbody').innerHTML = "";
-    produtos.forEach(adcionarProduto);
+    produtos.forEach(adicionarProduto);
 }
 
 function excluirItem(codigo){
-    produtos.splice(produtos.indexOf(codigo), 1);
-    atualizarTabela();
+  document.getElementById("tbody").deleteRow(0);
+  // produtos.splice(produtos.indexOf(codigo), 1);
+  // atualizarTabela();
 }
 
-function adcionarProduto(produto){
-    var body = document.getElementById('tbody');
+function adicionarProduto(){
+  const codigo = document.getElementById("codigo").value;
+  const nome = "teste";
+  const valor = 10.0;
+
+  var body = document.getElementById('tbody');
+
+  if(codigo) {
     var row = body.insertRow(0);
     var cel1 = row.insertCell(0);
     var cel2 = row.insertCell(1);
     var cel3 = row.insertCell(2);
     var cel4 = row.insertCell(3);
-    cel1.innerHTML = produto.codigo;
-    cel2.innerHTML = produto.nome;
-    cel3.innerHTML = produto.valor;
-    cel4.innerHTML = '<button id="excluir" type="reset" onclick="excluirItem(this.parentNode.parentNode.firstChild.innerHTML)">Excluir</button>'
+
+    cel1.innerHTML = codigo;
+    cel2.innerHTML = nome;
+    cel3.innerHTML = valor;
+    cel4.innerHTML = `<button id="excluir" type="reset" onclick="excluirItem(this.parentNode.parentNode.firstChild.innerHTML)">Excluir</button>`
+  }
 }

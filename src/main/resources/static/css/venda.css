@@ -16,19 +16,28 @@ form {
 	margin: 5%;
 }
 
-span, label {
-	margin: 10px 0;
+span, label, th, td {
+	margin: 10px 10px;
 	font-family: 'Open Sans', sans-serif;
+}
+
+#labelCpf {
+	margin: auto 1vh auto 0;
 }
 
 input {
 	width: 100%;
-	padding: 12px 20px;
-	margin: 8px 0;
+	padding: 16px 20px;
+	margin-right: 15px;
 	display: inline-block;
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	box-sizing: border-box;
+	height: 80%;
+}
+
+input#cpf {
+	margin-top: 8px;
 }
 
 .container {
@@ -55,16 +64,6 @@ input {
 	margin-right: 10%
 }
 
-#insercaoProdutos {
-	flex: 1;
-	align-items: stretch;
-	width: 80%;
-}
-
-#insercaoProdutos input {
-	flex: 1;
-}
-
 #codigoContainer {
 	flex: 1;
 	margin: 0 20px 0 0;
@@ -80,69 +79,54 @@ input {
 	width: 70%;
 }
 
-#right-col button{
-	margin: 10px;
-}
-
 #btnAdicionar {
-	width: 100%;
 	background-color: #2849da;
 	color: white;
 	padding: 14px 27px;
-	margin: 8px 0;
 	border: none;
 	border-radius: 8px;
 	cursor: pointer;
-	margin-left: 80%;
-    margin-top: 33%;
+	box-shadow: 1px 1px 5px -1px #000000ad;
+	height: 80%;
 }
 
 #btnAdicionar:hover {
 	background-color: #1d3abd;
 }
 
-#btnConcluir {
-	/* background-color: var(--sucess-color); */
-	width: 100%;
-	background-color: #4CAF50;
+#btnCancelar, #excluir, #btnConcluir, #btnBuscar {
 	color: white;
-	padding: 14px 20px;
-	margin: 8px 0;
 	border: none;
 	border-radius: 8px;
 	cursor: pointer;
+	box-shadow: 1px 1px 5px -1px #000000ad;
 }
 
-#btnConcluir:hover {
-	background-color: #45a049;
+#btnConcluir, #btnBuscar {
+	background-color: #4CAF50;
+	margin: 8px;
+	padding: 14px 20px;
 }
 
 #btnCancelar {
-	/* background-color: var(--danger-color); */
+	margin: 8px;
+	padding: 14px 20px;
+}
+
+#btnConcluir, #btnCancelar {
 	width: 100%;
-	background-color: #d21313;
-	color: white;
-	padding: 14px 20px;
-	margin: 8px 0;
-	border: none;
-	border-radius: 8px;
-	cursor: pointer;
 }
 
-#btnCancelar:hover {
+#btnConcluir:hover, #btnBuscar:hover {
+	background-color: #45a049;
+}
+
+#btnCancelar, #excluir {
+	background-color: #d21313;
+}
+
+#btnCancelar:hover, #excluir:hover {
 	background-color: #a20a0a;
-}
-
-#excluir {
-	width: 80%;
-	height: 45%;
-	background-color: #d21313;
-	color: white;
-	padding: 14px 20px;
-	margin: 8px 0;
-	border: none;
-	border-radius: 8px;
-	cursor: pointer;
 }
 
 table, th, td {
@@ -151,7 +135,23 @@ table, th, td {
 
 #tabela {
 	width: 100%;
+	border-collapse: collapse;
 }
+
+#tabela td, #tabela th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+#tabela tr:nth-child(even){background-color: #f2f2f2;}
+
+#tabela th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #14274e;
+	color: white;
+  }
 
 .popup-teste
 {
@@ -177,87 +177,20 @@ table, th, td {
     box-shadow: 1px 1px 5px -1px #000000ad;
     position: relative;
 }
-.popup-teste .title-page
-{
-    position: absolute;
-    height: 130px;
-    left: 0;
-    display: flex;
-    align-items: center;
-    background: url(/assets/imgs/bg_title_page.svg);
-    background-repeat: no-repeat;
-    background-position-y: center;
-    background-position-x: right;
-    padding: 0 2em 0 0;
-}
-.popup-teste .title-page img
-{
-	margin: 0 1em 0 2em;
-}
-div.close-header
-{
-	position: absolute;
-	right: 20px;
-	top: 20px;
-}
-div.close-header button
-{
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    transition: .2s;
-}
-div.close-header button img
-{
-    width: 35%;
-}
-.popup-teste .body
-{
-	margin-top: 130px;
-	height: calc( 100% - 130px );
-}
-.body .actions-buttons
-{
+
+#botoes {
+	position: absolute; 
+	right: 0;
+	bottom: 0;
 	display: flex;
-	width: 14%;
-	padding: 0 0.4em;
+	flex-direction: column;
 }
-.body .actions-buttons button
-{
-	background-color: transparent;
-	border: none;
-	cursor: pointer;
-	padding: 0;
-	width: 30px;
-}
-.body .actions-buttons div:first-of-type,
-.body .actions-buttons a
-{
+
+#pesquisaProduto {
 	display: flex;
-	width: 22px;
+	flex-direction: column;
 }
-.body .actions-buttons button img
-{
-	width: 21px;
-}
-.body .actions-buttons a img
-{
-	width: 100%;
-}
-.body .actions-buttons button[disabled],
-.body .actions-buttons a[disabled]
-{
-	opacity: .2;
-}
-.approved
-{
-    background-color: transparent;
-    border: 1px solid #0e9a15;
-    color: #0e9a15;
-}
-.disapproved
-{
-    background-color: transparent;
-    border: 1px solid #e01406;
-    color: #e01406;
+
+#insercaoProdutos {
+	width: 80%;
 }
