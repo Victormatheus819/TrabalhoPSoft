@@ -1,0 +1,54 @@
+@import 'default.css';
+
+header {
+	background-color: #14274e;
+	height: 6vh;
+	font-family: 'Open Sans', sans-serif;
+	color: #ccc;
+	display: flex;
+	align-items: center;
+	padding-left: 1vw;
+}
+
+span, label, h1 {
+	margin: 1vh 0;
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-size: 1.4em;
+  text-align: center;
+}
+
+.container {
+	height: 94vh;
+	background-color: #fff;
+}
+
+.content {
+	background-color: #f1f6f9;
+	width: 80vw;
+	height: 80vh;
+	border-radius: 10px;
+	display: flex;
+  flex-direction: column;
+}
+
+#dadosNota {
+    margin: auto 5vw;
+    display: flex;
+    flex-direction: column;
+}
+
+#btnFinalizar {
+  position: absolute; 
+  right: 0;
+  bottom: 0;
+  color: white;
+  background-color: #4CAF50;
+  padding: 14px 20px;
+  margin: 30px;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+}
