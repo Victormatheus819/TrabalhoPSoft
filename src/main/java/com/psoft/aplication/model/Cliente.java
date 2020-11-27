@@ -2,6 +2,8 @@ package com.psoft.aplication.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Getter;
@@ -12,8 +14,9 @@ import lombok.Setter;
 public  class Cliente {
 
   @Id
+  @GeneratedValue( strategy = GenerationType.IDENTITY )
   @Column(name ="id") 
-  @Getter @Setter private int id;
+  @Getter @Setter private Integer id;
   
   @Column(name ="nome")
   @Getter @Setter private String nome;
@@ -27,11 +30,11 @@ public  class Cliente {
   @Column(name ="endereco") 
   @Getter @Setter private String endereco;
  
-  @Column(name ="telefone") 
-  @Getter @Setter private String telefone;
+  @Column(name ="identidade") 
+  @Getter @Setter private String identidade;
  
   @Column(name ="preferencial") 
-  @Getter @Setter private boolean peferencial;
+  @Getter @Setter private boolean preferencial;
   
   @Column(name ="pontos") 
   @Getter @Setter private Integer pontos;

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" th:href="@{/css/index.css}" type="text/css">
+</head>
+
+<body>
+   <h1>Cadastro de cliente</h1>
+   <form method="post">
+       Nome:<input type="text" value="" name= "nome"/>
+       Cpf:<input type="text" value="" name= "cpf"/>
+       Email:<input type="text" value="" name= "email"/>
+       Endereço:<input type="text" value="" name= "endereco"/>
+       Identidade :<input type="text" value= "" name= "identidade">
+       Preferencial:
+       <select name="preferencial" id="pref">
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </select>
+       <button type="submit"> cadastrar</button>
+
+   </form>
+</body>
+
+</html>

@@ -2,6 +2,8 @@ package com.psoft.aplication.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,14 +14,15 @@ import lombok.Setter;
 @Table (name="fornecedor")
 public class Fornecedor {
 
-    @Id  
+    @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY )  
     @Column (name ="id")
-    @Getter private int id ;
+    @Getter private Integer id ;
         
     @Column (name ="nome")
     @Getter @Setter private String nome;
         
-    @Column (name ="senha") 
+    @Column (name ="endereco") 
     @Getter @Setter private String endereco;
 
 }

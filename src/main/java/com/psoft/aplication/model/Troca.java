@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -21,8 +23,9 @@ import lombok.Setter;
 public class Troca {
     
     @Id
+    @GeneratedValue( strategy = GenerationType.IDENTITY ) 
     @Column (name = "id") 
-    @Getter int id;
+    @Getter Integer id;
 
     @Column (name ="data") 
     @Getter @Setter private Date data ;
@@ -33,10 +36,10 @@ public class Troca {
 
     @ManyToMany
 	@JoinTable( name = "troca_item", joinColumns = {@JoinColumn( name = "id_troca" )}, inverseJoinColumns = {@JoinColumn( name = "id_item" )} )
-    private List<Item> itens;
+    @Getter @Setter private List<Item> itens;
     
     @OneToOne
 	@JoinTable( name = "troca_item", joinColumns = {@JoinColumn( name = "id_troca" )}, inverseJoinColumns = {@JoinColumn( name = "id_nota" )} )
-	private NotaFiscal notaFiscal;
+	@Getter @Setter private NotaFiscal notaFiscal;
 
 }
