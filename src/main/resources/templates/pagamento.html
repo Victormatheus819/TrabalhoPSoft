@@ -15,22 +15,33 @@
   <header>Sistema de controle de vendas - Pagamento</header>
 	<div class="container">
 		<div class="content">
-      <form action="">
-        <label for="cpf">CPF</label>
-        <input type="text" id="cpf" placeholder="Digite o CPF do cliente">
-      
-        <button id="btnBuscar">Buscar</button>
+      <div id="dadosPagamento">
+        <h1> Nome do cliente: </h1>
+        <h1> CPF do cliente: </h1>
+        <h1> Pontuação: </h1>
+        <h1>Valor total:</h1>
+        <h1>Valor com desconto:</h1>
+        <h1>Troco:</h1>
+      </div>
 
-        <label for="pagamento">Forma de pagamento</label>
-        <select id="formaPagamento">
-          <option value="dinheiro">Dinheiro</option>
-          <option value="debito">Cartão de Débito</option>
-          <option value="credito">Cartão de Crédito</option>
-        </select>
-      
-        <button id="btnFinalizar">Finalizar compra</button>
+      <form id="pagamentoForm" action="">
+        <div id="pagamentoOpcao">
+          <label for="pagamento">Forma de pagamento:</label>
+          <select id="formaPagamento">
+            <option value="dinheiro">Dinheiro</option>
+            <option value="debito">Cartão de Débito</option>
+            <option value="credito">Cartão de Crédito</option>
+          </select>
+
+          <input type="text" id="valor" placeholder="Valor pago">
+        </div>
+        <input type="checkbox" id="desconto" name="desconto" value="Sim">
+        <label for="desconto">O cliente deseja utilizar o desconto</label>
       </form>
+
+      <button id="btnFinalizar">Finalizar compra</button>
 	</div>
 
+  <script type="text/javascript" src="/js/pagamento.js"></script>
 </body>
 </html>
