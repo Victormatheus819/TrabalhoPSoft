@@ -6,11 +6,12 @@
 
 	<title>Venda</title>
   
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <link rel="stylesheet" th:href="@{/css/venda.css}" type="text/css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <script type="text/javascript" src="/js/venda.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 
 </head>
 <body id="venda">
@@ -67,6 +68,22 @@
 				</div>
 			</form>
 	</div>
+	<!-- Modal -->
+	<div id="popUp" class="popup-teste" > 
+		<div class="teste-container">
+			<div class="header">
+				<label for="cpf">CPF</label>
+				<input type="text" id="cpf" placeholder="Digite o CPF do cliente">
+				<button type="submit" id="btnBuscar">Enviar</button>
+			</div>
+		</div>
+	</div>
 
 </body>
+<script>
+	$('#popUp').on('shown.bsmodal', function () {});
+	$('#btnBuscar').on("click", function(){
+		$('#popUp').attr({"style":"display: none;"});
+	});
+</script>
 </html>

@@ -1,5 +1,4 @@
 
-
 var produto1 = {codigo: 01, nome: 'Produto1', valor: 11.49};
 var produto2 = {codigo: 02, nome: 'Produto2', valor: 22.90};
 var produto3 = {codigo: 03, nome: 'Produto3', valor: 59.99};
@@ -31,5 +30,5 @@ function adcionarProduto(produto){
     cel1.innerHTML = produto.codigo;
     cel2.innerHTML = produto.nome;
     cel3.innerHTML = produto.valor;
-    cel4.innerHTML = '<button type="reset" onclick="excluirItem(this.parentNode.parentNode.firstChild.innerHTML)">Excluir</button>'
+    cel4.innerHTML = '<button id="excluir" type="reset" onclick="excluirItem(this.parentNode.parentNode.firstChild.innerHTML)">Excluir</button>'
 }

@@ -152,3 +152,112 @@ table, th, td {
 #tabela {
 	width: 100%;
 }
+
+.popup-teste
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0, .4);
+    z-index: 9999999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.teste-container
+{
+	display: flex;
+	flex-direction: column;
+    width: 550px;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 1.5em;
+    box-shadow: 1px 1px 5px -1px #000000ad;
+    position: relative;
+}
+.popup-teste .title-page
+{
+    position: absolute;
+    height: 130px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    background: url(/assets/imgs/bg_title_page.svg);
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: right;
+    padding: 0 2em 0 0;
+}
+.popup-teste .title-page img
+{
+	margin: 0 1em 0 2em;
+}
+div.close-header
+{
+	position: absolute;
+	right: 20px;
+	top: 20px;
+}
+div.close-header button
+{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: .2s;
+}
+div.close-header button img
+{
+    width: 35%;
+}
+.popup-teste .body
+{
+	margin-top: 130px;
+	height: calc( 100% - 130px );
+}
+.body .actions-buttons
+{
+	display: flex;
+	width: 14%;
+	padding: 0 0.4em;
+}
+.body .actions-buttons button
+{
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	width: 30px;
+}
+.body .actions-buttons div:first-of-type,
+.body .actions-buttons a
+{
+	display: flex;
+	width: 22px;
+}
+.body .actions-buttons button img
+{
+	width: 21px;
+}
+.body .actions-buttons a img
+{
+	width: 100%;
+}
+.body .actions-buttons button[disabled],
+.body .actions-buttons a[disabled]
+{
+	opacity: .2;
+}
+.approved
+{
+    background-color: transparent;
+    border: 1px solid #0e9a15;
+    color: #0e9a15;
+}
+.disapproved
+{
+    background-color: transparent;
+    border: 1px solid #e01406;
+    color: #e01406;
+}
