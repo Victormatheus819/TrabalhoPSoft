@@ -39,7 +39,7 @@ public class Troca {
     @Getter @Setter private List<Item> itens;
     
     @OneToOne
-	@JoinTable( name = "troca_item", joinColumns = {@JoinColumn( name = "id_troca" )}, inverseJoinColumns = {@JoinColumn( name = "id_nota" )} )
+	@JoinTable( name = "troca_nota", joinColumns = {@JoinColumn( name = "id_troca" )}, inverseJoinColumns = {@JoinColumn( name = "id_nota" )} )
 	@Getter @Setter private NotaFiscal notaFiscal;
 
 }

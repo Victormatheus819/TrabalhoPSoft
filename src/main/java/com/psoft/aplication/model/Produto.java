@@ -23,10 +23,10 @@ public class Produto {
     @Getter @Setter private String nome ;
 
     @Column (name ="codigo_identificacao") 
-    @Getter @Setter private String codigo_identificacao;
+    @Getter @Setter private String codigoIdentificacao;
 
     @Column (name ="codigo_barras") 
-    @Getter @Setter private  String codigo_barras ;
+    @Getter @Setter private  String codigoBarras ;
 
     @Column (name ="preco") 
     @Getter @Setter private Double preco;

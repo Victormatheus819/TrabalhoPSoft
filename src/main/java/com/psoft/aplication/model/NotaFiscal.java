@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -26,5 +29,20 @@ public class NotaFiscal {
 
     @Column (name ="data") 
     @Getter @Setter private Date data;
+
+    @OneToOne
+	@JoinTable( name = "venda_nota", joinColumns = {@JoinColumn( name = "id_nota" )}, inverseJoinColumns = {@JoinColumn( name = "id_venda" )} )
+    @Setter private Venda venda;
+    
+    @OneToOne
+	@JoinTable( name = "troca_nota", joinColumns = {@JoinColumn( name = "id_nota" )}, inverseJoinColumns = {@JoinColumn( name = "id_troca" )} )
+    @Setter private Troca troca;
+    
+    public String tipoNota(){
+        if(this.troca == null){
+            return "Nota de venda";
+        }
+        return "Nota de troca";
+    }
 
 }
