@@ -6,6 +6,7 @@ import com.psoft.aplication.service.LoginService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -49,6 +50,22 @@ public class LoginController {
             session.setAttribute("idUsuario", idUsuario);
             mv.setViewName("venda");
         }
+        return mv;
+    }
+
+    @GetMapping("/ativarSistema")
+    public ModelAndView redirecionarIndex( HttpSession session ){
+        ModelAndView mv = new ModelAndView();
+        session.setAttribute("naoValidar", true);
+        mv.setViewName("index");
+        return mv;
+    }
+
+    @GetMapping("/login")
+    public ModelAndView redirecionarLogin( HttpSession session ){
+        ModelAndView mv = new ModelAndView();
+        session.setAttribute("naoValidar", true);
+        mv.setViewName("login");
         return mv;
     }
 
