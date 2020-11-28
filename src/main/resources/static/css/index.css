@@ -1,11 +1,14 @@
-.content{
+.content
+{
 	font-family: 'Open Sans', sans-serif;
+	width: 80%;
 }
-.container {
+.container 
+{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 40%;
+	width: 50%;
 	height: 90%;
 	background-color: #d3e6f1;
 	margin-top: 25px;
@@ -14,31 +17,41 @@
 	margin-left: 30%;
 	margin-right: 30%;
 }
-#botao {
-	width: 50%;
+.text-info
+{
+	text-align: center;
+}
+#botao 
+{
+	width: 100%;
 	height: 20%;
 	background-color: #4CAF50;
 	color: white;
-	padding: 14px 20px;
+	padding: 1em 0 1em 0;
 	margin: 8px 0;
 	border: none;
 	border-radius: 8px;
 	cursor: pointer;
 	font-size: inherit;
 }
-#usuario {
-	padding: 14px 20px;
+.form-control 
+{
+	width: 100%;
+	padding: 1em 0 1em 0;
 	margin: 8px 0;
 	border: none;
 	border-radius: 8px;
 }
-#senha {
-	padding: 14px 26px;
-	margin: 8px 0;
-	border: none;
-	border-radius: 8px;
+.form-group label
+{
+	top: 0;
+	left: 0;
+	color: #414140;
+	font-size: 1.2rem;
+	font-weight: 600;
 }
-header {
+header 
+{
 	background-color: #14274e;
 	height: 6vh;
 	font-family: 'Open Sans', sans-serif;
@@ -46,4 +59,15 @@ header {
 	display: flex;
 	align-items: center;
 	padding-left: 1vw;
+}
+.alert 
+{
+	width: 40%;
+	font-family: 'Open Sans', sans-serif;
+	padding: 20px;
+	background-color: #f44336;
+	color: white;
+	position: absolute;
+	margin-top: -25%;
+	text-align: center;
 }

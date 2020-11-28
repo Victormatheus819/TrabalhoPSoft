@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface GerenteDao extends JpaRepository<Gerente,Integer>  {
     
+    public Gerente findByCodigoAndSenha(String codigo, String senha);
+
 }

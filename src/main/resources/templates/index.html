@@ -7,26 +7,33 @@
     <link rel="stylesheet" th:href="@{/css/index.css}" type="text/css">
 </head>
 <body id="login">
-	<header>Sistema de controle de vendas</header>
+    <header >Sistema de controle de vendas</header>
+
+
 	<div class="container">
 
-		<div class="content">
+        <div class="alert" role="alert" th:if="${session.erroAtivaSistema}">
+            <strong th:text="${session.erroAtivaSistema}"></strong>
+        </div>
 
-			<form action="formulario">
-                <h3 class="text-info">Iniciar Sistema</h3>
+		<div class="content">
+            <h3 class="text-info">Iniciar Sistema</h3>
+            
+			<form method="POST" action="/ativarSistema">
                 <div class="form-group">
-                    <label for="usuario">Usuario:</label>
-                    <input type="text" name="usuario" id="usuario" class="form-control">
+                    <label for="usuario">Código:</label>
+                    <input type="text" name="codigo" id="codigo" class="form-control">
 				</div>
 				<div class="form-group">
 					<label for="password" class="text-info">Senha:</label>
 					<input type="text" name="senha" id="senha" class="form-control">
 				</div>
 				<div class="form-group">
-					<button id="botao" onclick="window.location.href = 'http://localhost:8080/venda.html'">Logar</button>
+					<button id="botao" type="submit">Enviar</button>
 				</div>
 			</form>
 
+            <button  onclick="window.location.href = 'http://localhost:8080/venda.html'">Vai para Venda</button>
 		</div>
 
 	</div>
