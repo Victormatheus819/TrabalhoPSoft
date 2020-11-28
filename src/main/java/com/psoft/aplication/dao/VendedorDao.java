@@ -7,5 +7,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface VendedorDao extends JpaRepository<Vendedor,Integer>  {
+
+    Vendedor findByCodigoAndSenhaAndAtivo(String codigo, String senha, boolean ativo);
+
+    Vendedor findByNomeAndSenhaAndAtivo(String nome, String senha, boolean ativo);
     
 }

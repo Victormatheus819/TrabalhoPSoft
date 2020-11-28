@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sistema de controle de vendas</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}" type="text/css">
+</head>
+<body>
+
+    <header >Sistema de controle de vendas</header>
+
+	<div class="container">
+
+        <div class="alert" role="alert" th:if="${session.erroLogin}">
+            <strong th:text="${session.erroLogin}"></strong>
+        </div>
+
+		<div class="content">
+            <h3 class="text-info">Acessar Sistema</h3>
+            
+            <form method="POST" action="/login">
+                <div class="form-group">
+                    <label>Tipo de usuário:</label>
+                    <div class="radio-inline">
+                        <div class="form-control">
+                            <input type="radio" name="tipoUsuario" value="vendedor" checked ><span>Vendedor</span>
+                            <input type="radio" name="tipoUsuario" value="gerente"><span>Gerente</span>
+                        </div>
+                    </div>
+				</div>
+                <div class="form-group">
+                    <label>Usuário ou Código:</label>
+                    <input type="text" name="codigo" id="codigo" class="form-control">
+				</div>
+				<div class="form-group">
+					<label class="text-info">Senha:</label>
+					<input type="password" name="senha" id="senha" class="form-control">
+				</div>
+				<div class="form-group text-info">
+					<button id="botao" type="submit">Enviar</button>
+				</div>
+            </form>
+            
+		</div>
+
+	</div>
+
+</body>
+</html>

@@ -13,11 +13,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
     
+    //método para iniciar interface index ao acessar o sistema
     @RequestMapping ("/")
     public ModelAndView index(){
         return new ModelAndView("index");
     }
 
+    //validação de ativação do sistema pela interface index
     @PostMapping("/ativarSistema")
     public ModelAndView ativarSistema(String codigo, String senha, HttpSession session){
         ModelAndView mv = new ModelAndView();
@@ -28,6 +30,24 @@ public class LoginController {
         }else{
             session.setAttribute("erroAtivaSistema", "Gerente não encontrado! Tente novamente");
             mv.setViewName("index");
+        }
+        return mv;
+    }
+
+    //validação de autenticação de usuário pela interface login
+    @PostMapping("/login")
+    public ModelAndView autenticar(String tipoUsuario, String codigo, String senha, HttpSession session){
+        ModelAndView mv = new ModelAndView();
+        
+        Integer idUsuario = this.loginService.getIdUsuarioAutenticacao(tipoUsuario, codigo, senha);
+        if(idUsuario == null){
+            session.setAttribute("erroLogin", "Usuário não encontrado! Tente novamente");
+            mv.setViewName("index");
+        }else{
+            session.removeAttribute("erroLogin");
+            session.setAttribute("tipoUsuario", tipoUsuario);
+            session.setAttribute("idUsuario", idUsuario);
+            mv.setViewName("venda");
         }
         return mv;
     }
