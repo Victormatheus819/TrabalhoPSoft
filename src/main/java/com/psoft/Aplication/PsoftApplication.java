@@ -1,8 +1,10 @@
 package com.psoft.aplication;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@EnableAutoConfiguration
 public class PsoftApplication {
 
 	public static void main(String[] args) {
