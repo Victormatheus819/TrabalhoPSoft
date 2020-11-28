@@ -1,0 +1,196 @@
+@import 'default.css';
+
+header {
+	background-color: #14274e;
+	height: 6vh;
+	font-family: 'Open Sans', sans-serif;
+	color: #ccc;
+	display: flex;
+	align-items: center;
+	padding-left: 1vw;
+}
+form {
+	display: flex;
+	position: relative;
+	flex: 1;
+	margin: 5%;
+}
+
+span, label, th, td {
+	margin: 10px 10px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+#labelCpf {
+	margin: auto 1vh auto 0;
+}
+
+input {
+	width: 100%;
+	padding: 16px 20px;
+	margin-right: 15px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	height: 80%;
+}
+
+input#cpf {
+	margin-top: 8px;
+}
+
+.container {
+	height: 94vh;
+	background-color: #fff;
+}
+
+.content {
+	background-color: #d3e6f1;
+	width: 80vw;
+	height: 80vh;
+	border-radius: 10px;
+}
+
+#left-col {
+	flex: 3;
+}
+
+#right-col {
+	flex: 1;
+	align-items: flex-end;
+	justify-content: flex-end;
+	margin-top: -20%;
+	margin-right: 10%
+}
+
+#codigoContainer {
+	flex: 1;
+	margin: 0 20px 0 0;
+}
+
+#listaProdutosContainer {
+	flex: 4;
+}
+
+#listaProdutos {
+	flex: 1;
+	background-color: white;
+	width: 70%;
+}
+
+#btnAdicionar {
+	background-color: #2849da;
+	color: white;
+	padding: 14px 27px;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	box-shadow: 1px 1px 5px -1px #000000ad;
+	height: 80%;
+}
+
+#btnAdicionar:hover {
+	background-color: #1d3abd;
+}
+
+#btnCancelar, #excluir, #btnConcluir, #btnBuscar {
+	color: white;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	box-shadow: 1px 1px 5px -1px #000000ad;
+}
+
+#btnConcluir, #btnBuscar {
+	background-color: #4CAF50;
+	margin: 8px;
+	padding: 14px 20px;
+}
+
+#btnCancelar {
+	margin: 8px;
+	padding: 14px 20px;
+}
+
+#btnConcluir, #btnCancelar {
+	width: 100%;
+}
+
+#btnConcluir:hover, #btnBuscar:hover {
+	background-color: #45a049;
+}
+
+#btnCancelar, #excluir {
+	background-color: #d21313;
+}
+
+#btnCancelar:hover, #excluir:hover {
+	background-color: #a20a0a;
+}
+
+table, th, td {
+	border: 1px solid black;
+}
+
+#tabela {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#tabela td, #tabela th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+#tabela tr:nth-child(even){background-color: #f2f2f2;}
+
+#tabela th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #14274e;
+	color: white;
+  }
+
+.popup-teste
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0, .4);
+    z-index: 9999999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.teste-container
+{
+	display: flex;
+	flex-direction: column;
+    width: 550px;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 1.5em;
+    box-shadow: 1px 1px 5px -1px #000000ad;
+    position: relative;
+}
+
+#botoes {
+	position: absolute; 
+	right: 0;
+	bottom: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+#pesquisaProduto {
+	display: flex;
+	flex-direction: column;
+}
+
+#insercaoProdutos {
+	width: 80%;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Venda</title>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <link rel="stylesheet" th:href="@{/css/venda.css}" type="text/css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <script type="text/javascript" src="/js/venda.js"></script>
+
+
+</head>
+<body id="venda">
+  <header>Sistema de controle de vendas</header>
+	<div class="container">
+		<div class="content">
+			<form action="" class="row">
+				<div class="col" id="left-col">
+					<div id="insercaoProdutos" class="row">
+							<input type="text" name="codigo" id="codigo" placeholder="Código do produto">
+							<input type="number" name="quant" id="quant" placeholder="Quantidade">
+              <button type="button" id="btnAdicionar" onclick="adicionarProduto()">Adicionar</button>
+					</div>
+					<div id="listaProdutosContainer" class="col">
+
+						<span>Lista de Produtos</span>
+						<div id="listaProdutos">
+							<table id="tabela">
+								<thead>
+									<tr>
+										<th>Codigo</th>
+										<th>Produto</th>
+										<th>Valor</th>
+										<th>Ação</th>
+									</tr>
+								</thead>
+								<tbody id="tbody"></tbody>
+							</table>
+						</div>
+					<div>
+						<span>Subtotal: R$ </span> <span>0,00</span>
+					</div>
+				</div>
+
+        <div id="botoes" >
+          <button type="reset" id="btnCancelar"> Cancelar </button>
+          <button type="submit" id="btnConcluir"> Concluir </button>
+        </div>
+			</form>
+	</div>
+	<!-- Modal -->
+	<div id="popUp" class="popup-teste" > 
+		<div class="teste-container">
+			<div class="header">
+				<label id="labelCpf" for="cpf">CPF</label>
+				<input type="text" id="cpf" placeholder="Digite o CPF do cliente">
+				<button type="submit" id="btnBuscar">Enviar</button>
+			</div>
+		</div>
+	</div>
+
+</body>
+<script>
+	$('#popUp').on('shown.bsmodal', function () {});
+	$('#btnBuscar').on("click", function(){
+		$('#popUp').attr({"style":"display: none;"});
+	});
+</script>
+</html>

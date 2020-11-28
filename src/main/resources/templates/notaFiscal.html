@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Nota Fiscal</title>
+  
+  <link rel="stylesheet" th:href="@{/css/notaFiscal.css}" type="text/css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+</head>
+<body id="notaFiscal">
+  <header>Sistema de controle de vendas - Nota Fiscal</header>
+	<div class="container">
+		<div class="content">
+      <div id="dadosNota">
+        <h1>Compra finalizada!</h1>
+        <p>Cliente:</p>
+        <p>CPF:</p>
+        <p>Valor total da compra:</p>
+        <p>Valor total com desconto:</p>
+        <p>Forma de pagamento:</p>
+        <p>Valor pago:</p>
+        <p>Pontos utilizados:</p>
+        <p>Troco:</p>
+      </div>
+
+      <button type="button" id="btnFinalizar" onclick="window.location.href = 'http://localhost:8080/venda'">Nova compra</button>
+    </div>
+	</div>
+
+  <script type="text/javascript" src="/js/pagamento.js"></script>
+</body>
+</html>

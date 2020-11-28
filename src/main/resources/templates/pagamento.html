@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Pagamento</title>
+  
+  <link rel="stylesheet" th:href="@{/css/pagamento.css}" type="text/css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+</head>
+<body id="pagamento">
+  <header>Sistema de controle de vendas - Pagamento</header>
+	<div class="container">
+		<div class="content">
+      <div id="dadosPagamento">
+        <h1> Nome do cliente:</h1>
+        <h1> CPF do cliente:</h1>
+        <h1> Pontuação:</h1>
+        <h1>Valor total:</h1>
+        <h1>Valor com desconto:</h1>
+        <h1>Troco:</h1>
+        <h1>Pontuação gerada:</h1>
+      </div>
+
+      <form id="pagamentoForm" action="">
+        <div id="pagamentoOpcao">
+          <label for="pagamento">Forma de pagamento:</label>
+          <select id="formaPagamento">
+            <option value="dinheiro">Dinheiro</option>
+            <option value="debito">Cartão de Débito</option>
+            <option value="credito">Cartão de Crédito</option>
+          </select>
+
+          <input type="text" id="valor" placeholder="Valor pago">
+        </div>
+        <input type="checkbox" id="desconto" name="desconto" value="Sim">
+        <label for="desconto">O cliente deseja utilizar o desconto</label>
+      </form>
+
+      <button type="button" id="btnFinalizar" onclick="window.location.href = 'http://localhost:8080/nota-fiscal'">Finalizar compra</button>
+	</div>
+
+  <script type="text/javascript" src="/js/pagamento.js"></script>
+</body>
+</html>

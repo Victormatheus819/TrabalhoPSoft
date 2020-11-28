@@ -16,7 +16,7 @@
 }
 .text-info
 {
-	text-align: center;
+    text-align: center;   
 }
 #botao 
 {
@@ -39,13 +39,22 @@
 	border: none;
 	border-radius: 3px;
 }
-.form-group label
+.form-group label,
+.form-control span
 {
 	top: 0;
 	left: 0;
 	color: #414140;
 	font-size: 1.2rem;
 	font-weight: 600;
+}
+.radio-inline
+{
+    text-align: center;
+}
+.form-control input
+{
+    margin-left: 10%;
 }
 header 
 {
@@ -65,6 +74,6 @@ header
 	background-color: #f44336;
 	color: white;
 	position: absolute;
-	margin-top: -25%;
+	margin-top: -40%;
 	text-align: center;
 }

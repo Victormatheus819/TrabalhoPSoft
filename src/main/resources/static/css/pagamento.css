@@ -1,0 +1,91 @@
+@import 'default.css';
+
+ header {
+	background-color: #14274e;
+	height: 6vh;
+	font-family: 'Open Sans', sans-serif;
+	color: #ccc;
+	display: flex;
+	align-items: center;
+	padding-left: 1vw;
+}
+
+span, label, h1 {
+	margin: 1vh 0;
+	font-family: 'Open Sans', sans-serif;
+}
+
+input[type=text], select {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.container {
+	height: 94vh;
+	background-color: #fff;
+}
+
+.content {
+	background-color: #f1f6f9;
+	width: 80vw;
+	height: 80vh;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+#cpfForm {
+  margin: 5vh 5vw;
+  display: flex;
+  flex-direction: row;
+}
+
+#pagamentoForm{
+  margin: 2vh 5vw;
+}
+
+#pagamentoOpcao {
+  display: flex;
+  flex-direction: column;
+}
+
+#dadosCliente, #dadosPagamento {
+  margin: 0 5vw;
+  display: flex;
+  flex-direction: column;
+}
+
+#dadosPagamento {
+  margin-top: 10vh;
+}
+
+#btnBuscar {
+	background-color: #2849da;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 1vw;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+#btnFinalizar {
+  position: absolute; 
+  right: 0;
+  bottom: 0;
+  color: white;
+  background-color: #4CAF50;
+  padding: 14px 20px;
+  margin: 30px;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+#btnAdicionar:hover, #btnBuscar:hover {
+	background-color: #1d3abd;
+}
