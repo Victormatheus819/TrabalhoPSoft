@@ -23,12 +23,13 @@
 					<div id="insercaoProdutos" class="row">
 							<input type="text" name="codigo" id="codigo" placeholder="Código do produto">
 							<input type="number" name="quant" id="quant" placeholder="Quantidade">
-              <button type="button" id="btnAdicionar" onclick="adicionarProduto()">Adicionar</button>
+              				<button type="button" id="btnAdicionar" th:onclick="adicionarItem([[${session.venda}]])">Adicionar</button>
 					</div>
 					<div id="listaProdutosContainer" class="col">
 
 						<span>Lista de Produtos</span>
-						<div id="listaProdutos">
+
+						<div id="listaProdutos" >
 							<table id="tabela">
 								<thead>
 									<tr>
@@ -38,7 +39,9 @@
 										<th>Ação</th>
 									</tr>
 								</thead>
+
 								<tbody id="tbody"></tbody>
+							
 							</table>
 						</div>
 					<div>

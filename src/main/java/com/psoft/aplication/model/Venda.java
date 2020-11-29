@@ -1,5 +1,6 @@
 package com.psoft.aplication.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -47,10 +48,15 @@ public class Venda {
 
     @OneToMany
     @JoinColumn(name = "id_venda") //coluna id_venda está na tabela item
-    @Getter @Setter private List<Item> itens;
+    @Getter @Setter private List<Item> itens = new ArrayList<Item>();
     
     @OneToOne
 	@JoinTable( name = "venda_nota", joinColumns = {@JoinColumn( name = "id_venda" )}, inverseJoinColumns = {@JoinColumn( name = "id_nota" )} )
     private NotaFiscal notaFiscal;
     
+    //Criar a instancia de item
+    public void criarNovoItem(Produto produto, int quantidade) {
+        Item item = new Item(produto, quantidade);
+        this.itens.add(item);
+    }
 }

@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
+import javax.persistence.Transient;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,6 +16,11 @@ import lombok.Setter;
 @Entity
 @Table (name="item")
 public class Item {
+
+    public Item(Produto produto, int quantidade){
+        this.produto = produto;
+        this.quantidade = 1;
+    }
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY ) 
@@ -31,5 +36,8 @@ public class Item {
 
     @ManyToOne
 	@JoinColumn (name = "id_venda")
-	@Getter @Setter private Venda venda;
+    @Getter @Setter private Venda venda;
+    
+    @Transient
+    @Getter @Setter private Integer posicao;
 }

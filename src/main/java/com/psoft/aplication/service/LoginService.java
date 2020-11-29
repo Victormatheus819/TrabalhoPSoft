@@ -31,10 +31,11 @@ public class LoginService {
                 if(vendedor != null){
                     return vendedor.getId();
                 }
-            }
-            Gerente gerente = this.gerenteDao.findByCodigoAndSenhaAndAtivo(codigo, senha, true);
-            if(gerente != null){
-                return gerente.getId();
+            }else{
+                Gerente gerente = this.gerenteDao.findByCodigoAndSenhaAndAtivo(codigo, senha, true);
+                if(gerente != null){
+                    return gerente.getId();
+                }
             }
         }else{
             if(tipoUsuario.equals("vendedor")){
@@ -42,10 +43,11 @@ public class LoginService {
                 if(vendedor != null){
                     return vendedor.getId();
                 }
-            }
-            Gerente gerente = this.gerenteDao.findByNomeAndSenhaAndAtivo(codigo, senha, true);
-            if(gerente != null){
-                return gerente.getId();
+            }else{
+                Gerente gerente = this.gerenteDao.findByNomeAndSenhaAndAtivo(codigo, senha, true);
+                if(gerente != null){
+                    return gerente.getId();
+                }
             }
         }
 
