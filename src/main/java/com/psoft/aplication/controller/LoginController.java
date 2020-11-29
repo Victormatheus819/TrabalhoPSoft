@@ -1,5 +1,9 @@
 package com.psoft.aplication.controller;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.psoft.aplication.service.LoginService;
@@ -13,42 +17,43 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class LoginController {
-    
-    //método para iniciar interface index ao acessar o sistema
-    @RequestMapping ("/")
-    public ModelAndView index(){
+
+    // método para iniciar interface index ao acessar o sistema
+    @RequestMapping("/")
+    public ModelAndView index() {
         return new ModelAndView("index");
     }
 
-    //validação de ativação do sistema pela interface index
+    // validação de ativação do sistema pela interface index
     @PostMapping("/ativarSistema")
-    public ModelAndView ativarSistema(String codigo, String senha, HttpSession session){
+    public ModelAndView ativarSistema(String codigo, String senha, HttpSession session) {
         ModelAndView mv = new ModelAndView();
-        if(this.loginService.sistemaAtivo(codigo, senha)){
+        if (this.loginService.sistemaAtivo(codigo, senha)) {
             session.removeAttribute("erroAtivaSistema");
             session.setAttribute("sistemaAtivo", true);
             mv.setViewName("login");
-        }else{
+        } else {
             session.setAttribute("erroAtivaSistema", "Gerente não encontrado! Tente novamente");
             mv.setViewName("index");
         }
         return mv;
     }
 
-    //validação de autenticação de usuário pela interface login
+    // validação de autenticação de usuário pela interface login
     @PostMapping("/login")
-    public ModelAndView autenticar(String tipoUsuario, String codigo, String senha, HttpSession session){
+    public ModelAndView autenticar(HttpServletRequest request, HttpServletResponse response, String tipoUsuario,
+            String codigo, String senha, HttpSession session) throws IOException {
         ModelAndView mv = new ModelAndView();
         
         Integer idUsuario = this.loginService.getIdUsuarioAutenticacao(tipoUsuario, codigo, senha);
         if(idUsuario == null){
             session.setAttribute("erroLogin", "Usuário não encontrado! Tente novamente");
-            mv.setViewName("index");
+            mv.setViewName("login");
         }else{
             session.removeAttribute("erroLogin");
             session.setAttribute("tipoUsuario", tipoUsuario);
             session.setAttribute("idUsuario", idUsuario);
-            mv.setViewName("venda");
+            response.sendRedirect(request.getContextPath() + "/venda");
         }
         return mv;
     }
