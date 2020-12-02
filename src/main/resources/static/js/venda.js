@@ -2,6 +2,8 @@
 function adicionarItem(venda) {
   var codigo = document.getElementById("codigo").value;
   var quant = document.getElementById("quant").value;
+  var sub  = document.getElementById('subtotal');
+  var c= 0;
   if(quant == ""){
     quant = "1";
   }
@@ -29,7 +31,10 @@ function adicionarItem(venda) {
           cel2.innerHTML = data.produto.nome;
           cel3.innerHTML = data.produto.preco;
           cel4.innerHTML = `<button id="excluir" type="reset" onclick="excluirItem(` + data.posicao + `)">Excluir</button>`
+          c= c+data.produto.preco;
         }
+        sub.innerHTML= c;
+        console.log(c);
       },
       error : function() {
         alert("Erro : Produto não cadastrado");
