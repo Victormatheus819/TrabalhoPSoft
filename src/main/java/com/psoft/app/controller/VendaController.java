@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -44,6 +45,14 @@ public class VendaController {
         session.setAttribute("venda", vendaAtual);
         return true;
     }
+
+    // adiciona CPF do Cliente na sessão
+    @PutMapping("/clienteVenda/{cpf}")
+    @ResponseBody
+    public void adicionaCpfCliente(@PathVariable( value = "cpf" ) final String cpf, HttpSession session){
+        session.setAttribute("cpfCliente", cpf);
+    }
+
 
     @Autowired
     private VendaService vendaService;

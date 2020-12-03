@@ -59,37 +59,18 @@ function excluirItem(position){
   });
 }
 
-
-
-
-
-
-
-var produto1 = {codigo: 01, nome: 'Produto1', valor: 11.49};
-var produto2 = {codigo: 02, nome: 'Produto2', valor: 22.90};
-var produto3 = {codigo: 03, nome: 'Produto3', valor: 59.99};
-
-var produtos = [produto1, produto2, produto3];
-
-document.addEventListener("DOMContentLoaded", function(){
-    produtos.forEach(adicionarProduto);
-    
-});
-
-function atualizarTabela() {
-    document.getElementById('tbody').innerHTML = "";
-    produtos.forEach(adicionarProduto);
-}
-
-function adicionarProduto(){
-  const codigo = document.getElementById("codigo").value;
-  const quant = document.getElementById("quant").value;
-  const nome = "teste";
-  const valor = 10.0;
-
-  
-
-  if(codigo) {
-    
-  }
+function adicionarCliente() {
+  var cpf = document.getElementById("cpf").value;
+  $.ajax({
+      url : '/clienteVenda/'+ cpf ,
+      type :'PUT',
+      cache: false,
+      timeout: 600000,
+      success : function(data) {  
+        
+      },
+      error : function() {
+        alert("Erro : Produto não cadastrado");
+      }
+  });
 }
