@@ -67,10 +67,10 @@ function adicionarCliente() {
       cache: false,
       timeout: 600000,
       success : function(data) {  
-
+        document.getElementById("popUp").style.display = "none";
       },
       error : function() {
-        alert("Erro : Cliente não adicionado");
+        alert("Erro : Cliente não cadastrado");
       }
   });
 }

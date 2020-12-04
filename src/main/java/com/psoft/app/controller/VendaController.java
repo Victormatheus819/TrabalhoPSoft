@@ -2,6 +2,7 @@ package com.psoft.app.controller;
 
 import javax.servlet.http.HttpSession;
 
+import com.psoft.app.model.Cliente;
 import com.psoft.app.model.Item;
 import com.psoft.app.model.Venda;
 import com.psoft.app.service.LoginService;
@@ -55,6 +56,13 @@ public class VendaController {
     @ResponseBody
     public void adicionaCpfCliente(@PathVariable( value = "cpf" ) final String cpf, HttpSession session){
         session.setAttribute("cpfCliente", cpf);
+        Cliente clienteAtual = this.vendaService.getCliente(cpf);
+
+        Venda vendaAtual = (Venda) session.getAttribute("venda");
+        vendaAtual.setCliente(clienteAtual);
+
+        session.removeAttribute("venda");
+        session.setAttribute("venda", vendaAtual);
     }
 
     // exclui a venda atual e retorna para a interface de venda

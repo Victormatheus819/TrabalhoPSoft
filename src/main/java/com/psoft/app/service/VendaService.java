@@ -3,6 +3,8 @@ package com.psoft.app.service;
 import java.util.List;
 
 import com.psoft.app.dao.ProdutoDao;
+import com.psoft.app.dao.ClienteDao;
+import com.psoft.app.model.Cliente;
 import com.psoft.app.model.Item;
 import com.psoft.app.model.Produto;
 import com.psoft.app.model.Venda;
@@ -12,6 +14,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class VendaService {
+
+    @Autowired
+    private ClienteDao clienteDao;
 
     //criar item 
 	public Venda criaItem(String codigo, Integer quantidade, Venda venda) {
@@ -41,10 +46,13 @@ public class VendaService {
         }
         return itemList;
     }
+
+    public Cliente getCliente(String cpf){
+        Cliente cliente = this.clienteDao.findByCpf(cpf);
+        return cliente;
+    }
     
     @Autowired
     private ProdutoDao produtoDao;
-
-   
     
 }

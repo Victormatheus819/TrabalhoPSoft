@@ -32,9 +32,6 @@ public  class Cliente {
  
   @Column(name ="identidade") 
   @Getter @Setter private String identidade;
- 
-  @Column(name ="preferencial") 
-  @Getter @Setter private boolean preferencial;
   
   @Column(name ="pontos") 
   @Getter @Setter private Integer pontos;
