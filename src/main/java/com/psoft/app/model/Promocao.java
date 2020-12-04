@@ -32,5 +32,8 @@ public class Promocao {
 
     @Column (name = "data_final") 
     @Getter @Setter private Date dataFinal;
+
+    @Column (name = "porcentagem_desconto")
+    @Getter @Setter private Double porcentagemDesconto;
     
 }

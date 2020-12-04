@@ -1,11 +1,13 @@
 package com.psoft.app.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.psoft.app.ObservableLoja;
 import com.psoft.app.ObserverLoja;
 import com.psoft.app.dao.ProdutoDao;
+import com.psoft.app.dao.PromocaoDao;
 import com.psoft.app.dao.ClienteDao;
 import com.psoft.app.dao.VendaDao;
 import com.psoft.app.model.Cliente;
@@ -24,11 +26,18 @@ public class VendaService implements ObservableLoja {
     @Autowired
     private ClienteDao clienteDao;
 
+    @Autowired
+    private PromocaoDao promocaoDao;
+
     //criar item 
 	public Venda criarItem(String codigo, Integer quantidade, Venda venda) {
         Produto produto = this.produtoDao.findByCodigoBarras(codigo);
         if(produto == null){
             return null;
+        }
+        Double porcentagemDesconto = this.promocaoDao.getToProduto(produto.getId());
+        if(porcentagemDesconto != null){
+            produto.setPreco( produto.getPreco() - (produto.getPreco() * (porcentagemDesconto/100)));
         }
         venda.criarNovoItem(produto, quantidade);
         return venda;

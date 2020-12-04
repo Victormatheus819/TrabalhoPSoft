@@ -15,6 +15,6 @@ public interface GerenteDao extends JpaRepository<Gerente,Integer>  {
     Gerente findByNomeAndSenhaAndAtivo(String nome, String senha, boolean ativo);
 
     @Query(value = "SELECT id FROM gerente WHERE senha=:senha LIMIT 1", nativeQuery =true)
-	Integer findOneBySenha(@Param("senha")String senha);
+	Integer findOneBySenha(@Param("senha") String senha);
 
 }

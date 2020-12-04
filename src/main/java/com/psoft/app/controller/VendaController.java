@@ -3,7 +3,6 @@ package com.psoft.app.controller;
 import javax.servlet.http.HttpSession;
 
 import com.psoft.app.model.Cliente;
-import com.psoft.app.model.Item;
 import com.psoft.app.model.Produto;
 import com.psoft.app.model.Venda;
 import com.psoft.app.service.LoginService;
@@ -14,10 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class VendaController {
@@ -56,17 +53,21 @@ public class VendaController {
     }
 
     // adiciona CPF do Cliente na sessão
-    @PutMapping("/clienteVenda/{cpf}")
+    @GetMapping("/clienteVenda/{cpf}")
     @ResponseBody
-    public void adicionaCpfCliente(@PathVariable( value = "cpf" ) final String cpf, HttpSession session){
-        session.setAttribute("cpfCliente", cpf);
+    public boolean adicionaCpfCliente(@PathVariable( value = "cpf" ) final String cpf, HttpSession session){
+        
         Cliente clienteAtual = this.vendaService.getCliente(cpf);
+        if(clienteAtual == null){
+            return false;
+        }
 
         Venda vendaAtual = (Venda) session.getAttribute("venda");
         vendaAtual.setCliente(clienteAtual);
 
         session.removeAttribute("venda");
         session.setAttribute("venda", vendaAtual);
+        return true;
     }
 
     // exclui a venda atual e retorna para a interface de venda

@@ -63,11 +63,15 @@ function adicionarCliente() {
   var cpf = document.getElementById("cpf").value;
   $.ajax({
       url : '/clienteVenda/'+ cpf ,
-      type :'PUT',
+      type :'GET',
       cache: false,
       timeout: 600000,
-      success : function(data) {  
-        document.getElementById("popUp").style.display = "none";
+      success : function(data) { 
+        if(data == true){
+          document.getElementById("popUp").style.display = "none";
+        }else{
+          alert("Erro : Cliente não cadastrado");
+        }
       },
       error : function() {
         alert("Erro : Cliente não cadastrado");
