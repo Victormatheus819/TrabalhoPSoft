@@ -10,6 +10,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -35,6 +38,7 @@ public class Item {
     @Getter @Setter private int quantidade;
 
     @ManyToOne
+    @Cascade(CascadeType.SAVE_UPDATE)
 	@JoinColumn (name = "id_venda")
     @Getter @Setter private Venda venda;
     

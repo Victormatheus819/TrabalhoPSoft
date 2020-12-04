@@ -17,7 +17,7 @@ public class TipoPagamento {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY ) 
     @Column( name = "id")
-    @Getter private Integer id;
+    @Getter @Setter private Integer id;
 
     @Column( name = "metodo" )
     @Getter @Setter private String metodo;

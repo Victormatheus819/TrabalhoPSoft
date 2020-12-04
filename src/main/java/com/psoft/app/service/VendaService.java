@@ -1,17 +1,24 @@
 package com.psoft.app.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.psoft.app.ObservableLoja;
+import com.psoft.app.ObserverLoja;
 import com.psoft.app.dao.ProdutoDao;
+import com.psoft.app.dao.VendaDao;
+import com.psoft.app.model.Cliente;
 import com.psoft.app.model.Item;
 import com.psoft.app.model.Produto;
+import com.psoft.app.model.TipoPagamento;
 import com.psoft.app.model.Venda;
+import com.psoft.app.model.Vendedor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class VendaService {
+public class VendaService implements ObservableLoja {
 
     //criar item 
 	public Venda criaItem(String codigo, Integer quantidade, Venda venda) {
@@ -41,10 +48,52 @@ public class VendaService {
         }
         return itemList;
     }
-    
+
+    private List<ObserverLoja> observers = new ArrayList();
     @Autowired
     private ProdutoDao produtoDao;
+    @Autowired
+    private VendaDao vendaDao;
+    
+    public void salvarVenda(Venda venda){
+        ProdutoService prodserv= new ProdutoService();
+        Cliente cli= new Cliente();
+        Vendedor vend =new Vendedor();
+        TipoPagamento tp = new TipoPagamento();
+        cli.setId(6);
+        vend.setId(1);
+        tp.setId(1);
+        venda.setVendedor(vend);
+        venda.setCliente(cli);
+        venda.setTipoPagamento(tp);
+        List<Item> itens = venda.getItens();
+        venda.setItens(new ArrayList());
+        vendaDao.save(venda);
+        venda.setItens(itens);
+        this.registerObserver(prodserv);
+        for(Item item : venda.getItens()){
+            this.notifyObservers(item);
+        } 
 
-   
+    }
+     @Override
+       public void registerObserver(ObserverLoja observer) {
+            observers.add(observer);
+       }
+ 
+       @Override
+       public void removeObserver(ObserverLoja observer) {
+            observers.remove(observer);
+       }
+ 
+       @Override
+       public void notifyObservers(Item item) {
+            for (ObserverLoja ob : observers) {
+            System.out.println("Notificando observers!");
+              ob.update(item);
+            }
+       }
+
+
     
 }

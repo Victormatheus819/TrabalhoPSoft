@@ -16,6 +16,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -47,7 +50,8 @@ public class Venda {
     @Getter @Setter private Vendedor vendedor;
 
     @OneToMany
-    @JoinColumn(name = "id_venda") //coluna id_venda está na tabela item
+    @JoinColumn(name = "id_venda") 
+    @Cascade(CascadeType.SAVE_UPDATE)//coluna id_venda está na tabela item
     @Getter @Setter private List<Item> itens = new ArrayList<Item>();
     
     @OneToOne

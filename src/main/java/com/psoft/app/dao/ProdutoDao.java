@@ -9,5 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface ProdutoDao extends JpaRepository<Produto,Integer>  {
     
     public Produto findByCodigoBarras(String codigoBarras);
+    
 }
 

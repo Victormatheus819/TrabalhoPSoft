@@ -1,5 +1,7 @@
 package com.psoft.app.controller;
 
+
+
 import javax.servlet.http.HttpSession;
 
 import com.psoft.app.model.Item;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -47,4 +50,10 @@ public class VendaController {
 
     @Autowired
     private VendaService vendaService;
+
+    @PostMapping("/concluir")
+    public void concluirVenda(HttpSession session){
+        Venda venda = (Venda) session.getAttribute("venda");
+        vendaService.salvarVenda(venda);
+    }
 }
