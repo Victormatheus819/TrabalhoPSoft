@@ -63,4 +63,12 @@ public class LoginService {
         return false;
     }
 
+	public boolean isGerente(String senha) {
+        Integer id = this.gerenteDao.findOneBySenha( senha);
+            if(id != null){
+                return true;
+            }
+		return false;
+	}
+
 }

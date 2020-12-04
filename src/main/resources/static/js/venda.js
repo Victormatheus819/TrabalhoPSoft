@@ -67,10 +67,37 @@ function adicionarCliente() {
       cache: false,
       timeout: 600000,
       success : function(data) {  
-        
+
       },
       error : function() {
-        alert("Erro : Produto não cadastrado");
+        alert("Erro : Cliente não adicionado");
+      }
+  });
+}
+
+function showPopUpCancel(){
+  $('#popUpCancel').attr({"style":"display: flex;"});
+}
+
+function removerVenda() {
+	
+  var senhaGerente = document.getElementById("senhaGerente").value;
+  $.ajax({
+      url : '/removerVenda',
+      type :'GET', 
+      cache : false,
+      data: {senhaGerente : senhaGerente},
+      timeout: 600000,
+      success : function(data) {  
+        if(data == true){
+          $('#popUpCancel').attr({"style":"display: none;"});
+          window.location.reload();
+          return;
+        }
+        alert("Erro : Gerente não encontrado");
+      },
+      error : function() {
+        alert("Erro : Gerente não encontrado");
       }
   });
 }
