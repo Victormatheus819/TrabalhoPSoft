@@ -54,23 +54,22 @@ public class VendaService implements ObservableLoja {
     private ProdutoDao produtoDao;
     @Autowired
     private VendaDao vendaDao;
+    @Autowired
+    private ProdutoService produtoService;
     
     public void salvarVenda(Venda venda){
-        ProdutoService prodserv= new ProdutoService();
         Cliente cli= new Cliente();
         Vendedor vend =new Vendedor();
         TipoPagamento tp = new TipoPagamento();
-        cli.setId(6);
+        cli.setId(1);
         vend.setId(1);
         tp.setId(1);
         venda.setVendedor(vend);
         venda.setCliente(cli);
         venda.setTipoPagamento(tp);
-        List<Item> itens = venda.getItens();
-        venda.setItens(new ArrayList());
+        venda.getItens().forEach((item) -> item.setVenda(venda));
         vendaDao.save(venda);
-        venda.setItens(itens);
-        this.registerObserver(prodserv);
+        this.registerObserver(produtoService);
         for(Item item : venda.getItens()){
             this.notifyObservers(item);
         } 

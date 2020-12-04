@@ -1,7 +1,9 @@
 package com.psoft.app.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -9,9 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
+import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -28,7 +28,7 @@ public class Item {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY ) 
     @Column (name = "id")
-    @Getter private Integer id;
+    @Getter @Setter private Integer id;
 
     @ManyToOne
     @JoinColumn (name = "id_produto") 
@@ -37,9 +37,8 @@ public class Item {
     @Column (name = "quantidade") 
     @Getter @Setter private int quantidade;
 
-    @ManyToOne
-    @Cascade(CascadeType.SAVE_UPDATE)
-	@JoinColumn (name = "id_venda")
+    @ManyToOne(targetEntity = Venda.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_venda", nullable = false)
     @Getter @Setter private Venda venda;
     
     @Transient

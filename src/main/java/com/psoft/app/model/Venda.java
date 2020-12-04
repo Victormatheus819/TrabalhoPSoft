@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,9 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
+import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -29,7 +29,7 @@ public class Venda {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY ) 
     @Column (name ="id") 
-    @Getter private Integer id;
+    @Getter @Setter private Integer id;
 
     @Column (name ="data_final") 
     @Getter @Setter private Date data;
@@ -49,9 +49,7 @@ public class Venda {
     @JoinColumn (name ="id_vendedor") 
     @Getter @Setter private Vendedor vendedor;
 
-    @OneToMany
-    @JoinColumn(name = "id_venda") 
-    @Cascade(CascadeType.SAVE_UPDATE)//coluna id_venda está na tabela item
+    @OneToMany( targetEntity = Item.class, fetch = FetchType.EAGER, mappedBy = "venda", cascade = CascadeType.ALL, orphanRemoval = true)
     @Getter @Setter private List<Item> itens = new ArrayList<Item>();
     
     @OneToOne
