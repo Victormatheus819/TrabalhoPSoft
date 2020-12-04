@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import com.psoft.app.model.Cliente;
 import com.psoft.app.model.Item;
+import com.psoft.app.model.Produto;
 import com.psoft.app.model.Venda;
 import com.psoft.app.service.LoginService;
 import com.psoft.app.service.VendaService;
@@ -31,21 +32,24 @@ public class VendaController {
     //criar novo item e adicionara a variável de sessão
     @GetMapping("/criaItem/{codigo}/{quantidade}")
     @ResponseBody
-    public Item criaItem(@PathVariable( value = "codigo" ) final String codigo, @PathVariable( value = "quantidade" ) final Integer quantidade, HttpSession session){
+    public Produto criarItem(@PathVariable( value = "codigo" ) final String codigo, @PathVariable( value = "quantidade" ) final Integer quantidade, HttpSession session){
         Venda vendaAtual = (Venda) session.getAttribute("venda");
-        vendaAtual = this.vendaService.criaItem(codigo, quantidade, vendaAtual);
+        vendaAtual = this.vendaService.criarItem(codigo, quantidade, vendaAtual);
+        if(vendaAtual == null){
+            return null;
+        }
         session.removeAttribute("venda");
         session.setAttribute("venda", vendaAtual);
 
-        return vendaAtual.getItens().get(vendaAtual.getItens().size() - 1);
+        return vendaAtual.getItens().get(vendaAtual.getItens().size() - 1).getProduto();
     }
 
     // remover item da variavel de sessão
-    @GetMapping("/removerItem/{posicao}")
+    @GetMapping("/removerItem/{codigobarras}")
     @ResponseBody
-    public Boolean removeItem(@PathVariable( value = "posicao" ) final Integer posicao, HttpSession session){
+    public Boolean removerItem(@PathVariable( value = "codigobarras" ) final String codigobarras, HttpSession session){
         Venda vendaAtual = (Venda) session.getAttribute("venda");
-        vendaAtual = this.vendaService.removeItem(vendaAtual, posicao);
+        vendaAtual = this.vendaService.removerItem(vendaAtual, codigobarras);
         session.removeAttribute("venda");
         session.setAttribute("venda", vendaAtual);
         return true;
@@ -84,4 +88,10 @@ public class VendaController {
 
     @Autowired
     private LoginService loginService;
+    
+    @PostMapping("/concluir")
+    public void concluirVenda(HttpSession session){
+        Venda venda = (Venda) session.getAttribute("venda");
+        vendaService.salvarVenda(venda);
+    }
 }

@@ -1,7 +1,9 @@
 package com.psoft.app.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,13 +21,13 @@ public class Item {
 
     public Item(Produto produto, int quantidade){
         this.produto = produto;
-        this.quantidade = 1;
+        this.quantidade = quantidade;
     }
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY ) 
     @Column (name = "id")
-    @Getter private Integer id;
+    @Getter @Setter private Integer id;
 
     @ManyToOne
     @JoinColumn (name = "id_produto") 
@@ -34,10 +36,7 @@ public class Item {
     @Column (name = "quantidade") 
     @Getter @Setter private int quantidade;
 
-    @ManyToOne
-	@JoinColumn (name = "id_venda")
+    @ManyToOne(targetEntity = Venda.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_venda", nullable = false)
     @Getter @Setter private Venda venda;
-    
-    @Transient
-    @Getter @Setter private Integer posicao;
 }

@@ -1,4 +1,3 @@
-
 function adicionarItem(venda) {
   var codigo = document.getElementById("codigo").value;
   var quant = document.getElementById("quant").value;
@@ -13,7 +12,7 @@ function adicionarItem(venda) {
       cache: false,
       timeout: 600000,
       success : function(data) {  
-        if(data == ""){
+        if(data == null){
           alert("Erro : Produto não cadastrado");
           return;
         }
@@ -27,11 +26,11 @@ function adicionarItem(venda) {
           var cel3 = row.insertCell(2);
           var cel4 = row.insertCell(3);
     
-          cel1.innerHTML = data.produto.codigoBarras;
-          cel2.innerHTML = data.produto.nome;
-          cel3.innerHTML = data.produto.preco;
-          cel4.innerHTML = `<button id="excluir" type="reset" onclick="excluirItem(` + data.posicao + `)">Excluir</button>`
-          c= c+data.produto.preco;
+          cel1.innerHTML = data.codigoBarras;
+          cel2.innerHTML = data.nome;
+          cel3.innerHTML = data.preco;
+          cel4.innerHTML = '<button id="excluir" type="reset" onclick="excluirItem(this, ' + data.codigoBarras + ')">Excluir</button>'
+          c= c + data.preco;
         }
         sub.innerHTML= c;
         console.log(c);
@@ -44,16 +43,17 @@ function adicionarItem(venda) {
   document.getElementById("quant").value = "";
 }
 
-function excluirItem(position){
+function excluirItem(row, codigoBarras){
 
   $.ajax({
-    url : '/removerItem/' + position ,
+    url : '/removerItem/' + codigoBarras,
     type :'GET',
     cache: false,
     timeout: 600000,
     success : function(data) {  
       if(data){
-        document.getElementById("tbody").deleteRow(0);
+        var i = (row.parentNode.parentNode.rowIndex) - 1;
+        document.getElementById('tbody').deleteRow(i);
       }
     }
   });
