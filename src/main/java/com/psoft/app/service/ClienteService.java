@@ -16,6 +16,11 @@ public class ClienteService {
     @Autowired
     private ClienteDao dao;
 
+    public Cliente getClienteByCpf(String cpf){
+        Cliente cliente = this.dao.findByCpf(cpf);
+        return cliente;
+    }
+
     public List<Cliente> getAllClients() {
         return dao.findAll();
     }

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import com.psoft.app.model.Cliente;
 import com.psoft.app.model.Produto;
 import com.psoft.app.model.Venda;
+import com.psoft.app.service.ClienteService;
 import com.psoft.app.service.LoginService;
 import com.psoft.app.service.VendaService;
 
@@ -57,7 +58,7 @@ public class VendaController {
     @ResponseBody
     public boolean adicionaCpfCliente(@PathVariable( value = "cpf" ) final String cpf, HttpSession session){
         
-        Cliente clienteAtual = this.vendaService.getCliente(cpf);
+        Cliente clienteAtual = this.clienteService.getClienteByCpf(cpf);
         if(clienteAtual == null){
             return false;
         }
@@ -81,11 +82,13 @@ public class VendaController {
         session.removeAttribute("venda");
         return true;
     }
-
  
 
     @Autowired
     private VendaService vendaService;
+
+    @Autowired
+    private ClienteService clienteService;
 
     @Autowired
     private LoginService loginService;

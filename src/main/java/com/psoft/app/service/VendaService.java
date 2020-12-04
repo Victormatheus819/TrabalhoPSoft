@@ -1,14 +1,12 @@
 package com.psoft.app.service;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.psoft.app.ObservableLoja;
 import com.psoft.app.ObserverLoja;
 import com.psoft.app.dao.ProdutoDao;
 import com.psoft.app.dao.PromocaoDao;
-import com.psoft.app.dao.ClienteDao;
 import com.psoft.app.dao.VendaDao;
 import com.psoft.app.model.Cliente;
 import com.psoft.app.model.Item;
@@ -24,12 +22,9 @@ import org.springframework.stereotype.Service;
 public class VendaService implements ObservableLoja {
 
     @Autowired
-    private ClienteDao clienteDao;
-
-    @Autowired
     private PromocaoDao promocaoDao;
 
-    //criar item 
+    //criar item para venda
 	public Venda criarItem(String codigo, Integer quantidade, Venda venda) {
         Produto produto = this.produtoDao.findByCodigoBarras(codigo);
         if(produto == null){
@@ -43,7 +38,7 @@ public class VendaService implements ObservableLoja {
         return venda;
     }
 
-     // remover item
+     // remover item de venda
 	public Venda removerItem(Venda vendaAtual, String codigoBarras) {
         for( int i = 0; i < vendaAtual.getItens().size(); i++){
             Item item = vendaAtual.getItens().get(i);
@@ -57,16 +52,15 @@ public class VendaService implements ObservableLoja {
         return vendaAtual;
     }
 
-    public Cliente getCliente(String cpf){
-        Cliente cliente = this.clienteDao.findByCpf(cpf);
-        return cliente;
-    }
     
     private List<ObserverLoja> observers = new ArrayList();
+    
     @Autowired
     private ProdutoDao produtoDao;
+    
     @Autowired
     private VendaDao vendaDao;
+    
     @Autowired
     private ProdutoService produtoService;
     
