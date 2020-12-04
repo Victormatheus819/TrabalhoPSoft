@@ -4,14 +4,18 @@ import javax.servlet.http.HttpSession;
 
 import com.psoft.app.model.Item;
 import com.psoft.app.model.Venda;
+import com.psoft.app.service.LoginService;
 import com.psoft.app.service.VendaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class VendaController {
@@ -53,7 +57,23 @@ public class VendaController {
         session.setAttribute("cpfCliente", cpf);
     }
 
+    // exclui a venda atual e retorna para a interface de venda
+    @GetMapping("/removerVenda")
+    @ResponseBody
+    public Boolean removerVenda( @RequestParam( value = "senhaGerente") String senha, HttpSession session) {
+        if(!this.loginService.isGerente(senha)){
+            return false;
+        }
+        session.removeAttribute("cpfCliente");
+        session.removeAttribute("venda");
+        return true;
+    }
+
+ 
 
     @Autowired
     private VendaService vendaService;
+
+    @Autowired
+    private LoginService loginService;
 }

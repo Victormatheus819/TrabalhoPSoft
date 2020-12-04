@@ -45,16 +45,17 @@
 							</table>
 						</div>
 					<div>
-						<span>Subtotal: R$ </span> <span id="subtotal" >0,00</span>
+						<span>Subtotal: R$ </span> <span id="subtotal">0,00</span>
 					</div>
 				</div>
 
         <div id="botoes" >
-          <button type="reset" id="btnCancelar"> Cancelar </button>
+          <button type="reset" th:onclick="showPopUpCancel()"  id="btnCancelar"> Cancelar </button>
           <button type="submit" action="@{/concluir}" id="btnConcluir"> Concluir </button>
         </div>
 			</form>
 	</div>
+
 	<!-- Modal -->
 	<div id="popUp" class="popup-teste" > 
 		<div class="teste-container">
@@ -66,11 +67,25 @@
 		</div>
 	</div>
 
+	<!-- Modal  Cancelamento-->
+	<div id="popUpCancel" class="popup-teste" > 
+		<div class="teste-container">
+			<div class="header">
+				<label id="labelCpf" for="cpf">Senha</label>
+				<input type="password" id="senhaGerente" placeholder="Digite a senha do Gerente">
+				<button id="btnRemove" th:onclick="removerVenda()">Enviar</button>
+			</div>
+		</div>
+	</div>
+
 </body>
 <script>
 	$('#popUp').on('shown.bsmodal', function () {});
 	$('#btnBuscar').on("click", function(){
 		$('#popUp').attr({"style":"display: none;"});
 	});
+
+	$('#popUpCancel').attr({"style":"display: none;"});
+	
 </script>
 </html>
