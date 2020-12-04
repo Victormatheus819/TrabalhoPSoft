@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ClienteDao extends JpaRepository<Cliente,Integer> {
-    
+    Cliente findByCpf(String cpf);
 }

@@ -60,6 +60,7 @@ function excluirItem(position){
 }
 
 function adicionarCliente() {
+  console.log("cliequei")
   var cpf = document.getElementById("cpf").value;
   $.ajax({
       url : '/clienteVenda/'+ cpf ,
@@ -67,10 +68,10 @@ function adicionarCliente() {
       cache: false,
       timeout: 600000,
       success : function(data) {  
-        
+        document.getElementById("popUp").style.display = "none";
       },
       error : function() {
-        alert("Erro : Produto não cadastrado");
+        alert("Erro : Cliente não cadastrado");
       }
   });
 }
