@@ -58,6 +58,12 @@ public class Venda {
     
     //Criar a instancia de item
     public void criarNovoItem(Produto produto, int quantidade) {
+        for(int i = 0;  i < this.itens.size(); i++){
+            if(this.itens.get(i).getProduto().getCodigoBarras().equals(produto.getCodigoBarras())){
+                this.itens.get(i).setQuantidade( this.itens.get(i).getQuantidade() + quantidade);
+                return;
+            }
+        }
         Item item = new Item(produto, quantidade);
         this.itens.add(item);
     }

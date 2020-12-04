@@ -27,7 +27,8 @@ ALTER TABLE cliente
 	DROP COLUMN cpf,
 	DROP COLUMN preferencial;
 ALTER TABLE cliente
-	ADD cpf VARCHAR(50);
+	ADD cpf VARCHAR(50),
+	ADD preferencial BOOLEAN NOT NULL;
 
 -- insert na tabela de versionamento
 INSERT INTO db_version(numeracao) VALUES (3);

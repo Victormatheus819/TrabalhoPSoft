@@ -11,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -22,7 +21,7 @@ public class Item {
 
     public Item(Produto produto, int quantidade){
         this.produto = produto;
-        this.quantidade = 1;
+        this.quantidade = quantidade;
     }
 
     @Id
@@ -40,7 +39,4 @@ public class Item {
     @ManyToOne(targetEntity = Venda.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_venda", nullable = false)
     @Getter @Setter private Venda venda;
-    
-    @Transient
-    @Getter @Setter private Integer posicao;
 }
