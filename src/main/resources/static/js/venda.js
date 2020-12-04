@@ -60,7 +60,6 @@ function excluirItem(position){
 }
 
 function adicionarCliente() {
-  console.log("cliequei")
   var cpf = document.getElementById("cpf").value;
   $.ajax({
       url : '/clienteVenda/'+ cpf ,
