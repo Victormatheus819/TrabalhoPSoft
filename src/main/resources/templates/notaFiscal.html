@@ -9,6 +9,7 @@
   <link rel="stylesheet" th:href="@{/css/notaFiscal.css}" type="text/css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <script type="text/javascript" src="/js/notaFiscal.js"></script>
 
 </head>
 <body id="notaFiscal">
@@ -27,7 +28,9 @@
         <p>Troco:</p>
       </div>
 
-      <button type="button" id="btnFinalizar" onclick="window.location.href = 'http://localhost:8080/venda'">Nova compra</button>
+      <form method="GET" th:action="@{/venda}">
+        <button type="submit" id="btnFinalizar">Nova compra</button>
+      </form>
     </div>
 	</div>
 

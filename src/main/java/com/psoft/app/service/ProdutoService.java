@@ -1,5 +1,7 @@
 package com.psoft.app.service;
 
+import javax.transaction.Transactional;
+
 import com.psoft.app.ObserverLoja;
 import com.psoft.app.dao.ProdutoDao;
 import com.psoft.app.model.Item;
@@ -14,10 +16,10 @@ public class ProdutoService implements ObserverLoja  {
     private ProdutoDao produtoDao;
     
     @Override
+    @Transactional
     public void update(Item item) {
         Produto produto = item.getProduto();
-        produto.setQuantidade(produto.getQuantidade() - item.getQuantidade());
-        produtoDao.save(produto);
+        produtoDao.updateEstoqueProduto(produto.getQuantidade() - item.getQuantidade(), produto.getId());
     }
 
   

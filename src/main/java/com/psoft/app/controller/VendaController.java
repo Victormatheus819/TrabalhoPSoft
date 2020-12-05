@@ -7,6 +7,7 @@ import com.psoft.app.model.Produto;
 import com.psoft.app.model.Venda;
 import com.psoft.app.service.ClienteService;
 import com.psoft.app.service.LoginService;
+import com.psoft.app.service.PagamentoService;
 import com.psoft.app.service.VendaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class VendaController {
@@ -82,10 +85,45 @@ public class VendaController {
         session.removeAttribute("venda");
         return true;
     }
+
+    // calcular informações de pagamento da venda
+    @RequestMapping ("/pagamentoVenda")
+    public ModelAndView prepararPagamentoDaVenda(HttpSession session){
+        ModelAndView mv = new ModelAndView("pagamento");
+        Venda vendaAtual = (Venda) session.getAttribute("venda");
+
+        Double valorTotal = this.pagamentoService.calcularValorTotal(vendaAtual);
+        mv.addObject("valorTotal", valorTotal);
+
+        // calcular valor com desconto de pontos
+
+        // calcular pontuação gerada com a compra
+
+        return mv;
+    }
+
+    @PostMapping("/confirmarPagamentoVenda")
+    public ModelAndView concluirVenda(HttpSession session, @RequestParam(value ="formaPagamento") String formaPagamento, @RequestParam(value ="valorTotal") String valorTotal ){
+        ModelAndView mv = new ModelAndView("notaFiscal");
+        Venda vendaAtual = this.pagamentoService.addTipoPagamento((Venda) session.getAttribute("venda"));
+
+        vendaAtual = this.vendaService.adicionarVendedor(vendaAtual, (Integer) session.getAttribute("idUsuario"));
+        
+        vendaService.salvarVenda(vendaAtual);
+
+        //conferir se pode excluir venda da sessão
+        
+        //conferir quais atributos se precisa para interface denota fiscal
+
+        return mv;
+    }
  
 
     @Autowired
     private VendaService vendaService;
+
+    @Autowired
+    private PagamentoService pagamentoService;
 
     @Autowired
     private ClienteService clienteService;
@@ -93,9 +131,4 @@ public class VendaController {
     @Autowired
     private LoginService loginService;
     
-    @PostMapping("/concluir")
-    public void concluirVenda(HttpSession session){
-        Venda venda = (Venda) session.getAttribute("venda");
-        vendaService.salvarVenda(venda);
-    }
 }

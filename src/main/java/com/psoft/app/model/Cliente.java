@@ -35,5 +35,8 @@ public  class Cliente {
   
   @Column(name ="pontos") 
   @Getter @Setter private Integer pontos;
+
+  @Column(name ="preferencial") 
+  @Getter @Setter private Boolean preferencial;
  
 }

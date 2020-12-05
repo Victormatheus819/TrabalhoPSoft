@@ -9,6 +9,7 @@
   <link rel="stylesheet" th:href="@{/css/pagamento.css}" type="text/css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <script type="text/javascript" src="/js/pagamento.js"></script>
 
 </head>
 <body id="pagamento">
@@ -16,19 +17,27 @@
 	<div class="container">
 		<div class="content">
       <div id="dadosPagamento">
-        <h1> Nome do cliente:</h1>
-        <h1> CPF do cliente:</h1>
-        <h1> Pontuação:</h1>
-        <h1>Valor total:</h1>
-        <h1>Valor com desconto:</h1>
-        <h1>Troco:</h1>
-        <h1>Pontuação gerada:</h1>
+        <h1 th:inline="text">Nome do Cliente: [[${session.venda.cliente.nome}]]</h1>
+        <h1 th:inline="text"> CPF do cliente: [[${session.venda.cliente.cpf}]]</h1>
+        <h1 th:inline="text"> Pontuação: [[${session.venda.cliente.pontos}]]</h1>
+        <h1 th:inline="text">Valor total: [[${valorTotal}]]</h1>
+        <h1 th:if="${session.venda.cliente.preferencial}">Pontuação gerada com a compra:</h1>
+        
+        <hr>
+        
+        <label for="desconto" th:if="${session.venda.cliente.preferencial}"><input type="checkbox" id="desconto" name="desconto" value="Sim">Utilizar o desconto</label>
+
+        <h1 th:if="${session.venda.cliente.preferencial}">Valor com desconto de pontuação acumulada:</h1>
+        
+        <hr>
+
+        
       </div>
 
-      <form id="pagamentoForm" action="">
+      <form id="pagamentoForm" th:action="@{/confirmarPagamentoVenda}" method="POST">
         <div id="pagamentoOpcao">
           <label for="pagamento">Forma de pagamento:</label>
-          <select id="formaPagamento">
+          <select id="formaPagamento" name="formaPagamento">
             <option value="dinheiro">Dinheiro</option>
             <option value="debito">Cartão de Débito</option>
             <option value="credito">Cartão de Crédito</option>
@@ -36,11 +45,14 @@
 
           <input type="text" id="valor" placeholder="Valor pago">
         </div>
-        <input type="checkbox" id="desconto" name="desconto" value="Sim">
-        <label for="desconto">O cliente deseja utilizar o desconto</label>
-      </form>
 
-      <button type="button" id="btnFinalizar" onclick="window.location.href = 'http://localhost:8080/nota-fiscal'">Finalizar compra</button>
+        <h1>Troco: Calcular no front</h1>
+        <input type="hidden" name="valorTotal" th:attr="value = ${valorTotal}">
+        
+      
+
+      <button type="submit" id="btnFinalizar">Finalizar compra</button>
+    </form>
 	</div>
 
   <script type="text/javascript" src="/js/pagamento.js"></script>

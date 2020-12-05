@@ -1,6 +1,7 @@
 package com.psoft.app.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.psoft.app.ObservableLoja;
@@ -8,12 +9,11 @@ import com.psoft.app.ObserverLoja;
 import com.psoft.app.dao.ProdutoDao;
 import com.psoft.app.dao.PromocaoDao;
 import com.psoft.app.dao.VendaDao;
-import com.psoft.app.model.Cliente;
+import com.psoft.app.dao.VendedorDao;
 import com.psoft.app.model.Item;
 import com.psoft.app.model.Produto;
 import com.psoft.app.model.TipoPagamento;
 import com.psoft.app.model.Venda;
-import com.psoft.app.model.Vendedor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,11 +52,21 @@ public class VendaService implements ObservableLoja {
         return vendaAtual;
     }
 
+    // relacionar vendedor à venda
+    public Venda adicionarVendedor(Venda venda, Integer idVendedor) {
+        venda.setVendedor( this.vendedorDao.findById(idVendedor).get());
+        return venda;
+	}
+
+
     
     private List<ObserverLoja> observers = new ArrayList();
     
     @Autowired
     private ProdutoDao produtoDao;
+
+    @Autowired
+    private VendedorDao vendedorDao;
     
     @Autowired
     private VendaDao vendaDao;
@@ -65,16 +75,11 @@ public class VendaService implements ObservableLoja {
     private ProdutoService produtoService;
     
     public void salvarVenda(Venda venda){
-        Cliente cli= new Cliente();
-        Vendedor vend =new Vendedor();
         TipoPagamento tp = new TipoPagamento();
-        cli.setId(1);
-        vend.setId(1);
         tp.setId(1);
-        venda.setVendedor(vend);
-        venda.setCliente(cli);
         venda.setTipoPagamento(tp);
         venda.getItens().forEach((item) -> item.setVenda(venda));
+        venda.setData(new Date());
         vendaDao.save(venda);
         this.registerObserver(produtoService);
         for(Item item : venda.getItens()){
@@ -99,6 +104,5 @@ public class VendaService implements ObservableLoja {
               ob.update(item);
             }
        }
-
     
 }

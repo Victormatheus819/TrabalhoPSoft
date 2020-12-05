@@ -57,6 +57,7 @@ function excluirItem(row, codigoBarras){
       }
     }
   });
+
 }
 
 function adicionarCliente() {

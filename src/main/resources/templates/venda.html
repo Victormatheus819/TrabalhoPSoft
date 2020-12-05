@@ -20,7 +20,7 @@
 	<header>Sistema de controle de vendas</header>
 	<div class="container">
 		<div class="content">
-			<form method="POST" th:action="@{/concluir}" class="row">
+			<form method="POST" th:action="@{/pagamentoVenda}" class="row">
 				<div class="col" id="left-col">
 					<div id="insercaoProdutos" class="row">
 						<input type="text" name="codigo" id="codigo" placeholder="Código do produto">
@@ -53,7 +53,7 @@
 					</div>
 
 					<div id="botoes">
-          <button type="reset" th:onclick="showPopUpCancel()"  id="btnCancelar"> Cancelar </button>
+          				<button type="reset" th:onclick="showPopUpCancel()"  id="btnCancelar"> Cancelar </button>
 						<button type="submit" id="btnConcluir"> Concluir </button>
 					</div>
 			</form>
