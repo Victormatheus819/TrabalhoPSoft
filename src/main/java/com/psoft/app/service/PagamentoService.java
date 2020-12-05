@@ -1,13 +1,17 @@
 package com.psoft.app.service;
 
+import com.psoft.app.dao.ClienteDao;
+import com.psoft.app.model.Cliente;
 import com.psoft.app.model.Item;
 import com.psoft.app.model.Venda;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PagamentoService {
-    
+    @Autowired
+    ClienteDao clienteDao;
     // calcualr valor total a ser pago de uma venda
     public Double calcularValorTotal(Venda venda) {
         double valor = 0.0;
@@ -21,6 +25,17 @@ public class PagamentoService {
         // implementar recuperação tipo pagamento
         //setar tipo pagamento em venda
 		return venda;
-	}
+    }
+    
+    public int addPontuacaoCliente(Venda venda){
+        int pontos = 0 ;
+        for(Item item : venda.getItens()){
+           pontos = (int) (pontos + (item.getProduto().getPreco()*item.getQuantidade()));
+        }
+         pontos = (int) (pontos * 0.1);
+         
+        return pontos;
+        
+    }
 
 }
