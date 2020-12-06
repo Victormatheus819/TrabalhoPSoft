@@ -94,30 +94,30 @@ public class VendaController {
 
         Double valorTotal = this.pagamentoService.calcularValorTotal(vendaAtual);
         mv.addObject("valorTotal", valorTotal);
-        mv.addObject("pontos",pagamentoService.addPontuacaoCliente(vendaAtual));
 
-        // calcular valor com desconto de pontos
+        if(vendaAtual.getCliente().getPreferencial()){
+            mv.addObject("pontosDaVenda", this.vendaService.calcularPontuacaoDaVenda(vendaAtual));
 
-        // calcular pontuação gerada com a compra
+            mv.addObject("valorComDesconto", this.pagamentoService.calcularDescontoComPontuacao(valorTotal, vendaAtual.getCliente().getPontos()));
+        }
 
         return mv;
     }
 
+    //salvar informações de venda que acaba de ser concluída
     @PostMapping("/confirmarPagamentoVenda")
     public ModelAndView concluirVenda(HttpSession session, @RequestParam(value ="formaPagamento") Integer formaPagamento, @RequestParam(value ="valorTotal") String valorTotal ){
         ModelAndView mv = new ModelAndView("notaFiscal");
         Venda vendaAtual = this.pagamentoService.addTipoPagamento((Venda) session.getAttribute("venda"), formaPagamento);
 
-        vendaAtual = this.vendaService.adicionarVendedor(vendaAtual, (Integer) session.getAttribute("idUsuario"));
+        vendaAtual = this.vendaService.adicionarVendedor(vendaAtual, (Integer) session.getAttribute("idUsuario")); 
         
-        vendaService.salvarVenda(vendaAtual);
+        this.vendaService.salvarVenda(vendaAtual);
+        vendaAtual.setNotaFiscal(notaFiscalService.gerarNotaFiscal(vendaAtual));
 
+        session.removeAttribute("venda");
+        mv.addObject("venda", vendaAtual);
         
-
-        //conferir se pode excluir venda da sessão
-        
-        //conferir quais atributos se precisa para interface denota fiscal
-
         return mv;
     }
  
@@ -130,6 +130,9 @@ public class VendaController {
 
     @Autowired
     private ClienteService clienteService;
+
+    @Autowired
+    private NotaFiscalService notaFiscalService;
 
     @Autowired
     private LoginService loginService;
