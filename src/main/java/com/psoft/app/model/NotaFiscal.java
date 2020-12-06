@@ -32,11 +32,11 @@ public class NotaFiscal {
 
     @OneToOne
 	@JoinTable( name = "venda_nota", joinColumns = {@JoinColumn( name = "id_nota" )}, inverseJoinColumns = {@JoinColumn( name = "id_venda" )} )
-    @Setter private Venda venda;
+    @Getter @Setter private Venda venda;
     
     @OneToOne
 	@JoinTable( name = "troca_nota", joinColumns = {@JoinColumn( name = "id_nota" )}, inverseJoinColumns = {@JoinColumn( name = "id_troca" )} )
-    @Setter private Troca troca;
+    @Getter @Setter private Troca troca;
     
     public String tipoNota(){
         if(this.troca == null){

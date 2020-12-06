@@ -109,7 +109,9 @@ public class VendaController {
 
         vendaAtual = this.vendaService.adicionarVendedor(vendaAtual, (Integer) session.getAttribute("idUsuario"));
         
-        vendaService.salvarVenda(vendaAtual);
+        Venda vendaSalva = vendaService.salvarVenda(vendaAtual);
+
+        mv.addObject("venda", vendaSalva);
 
         //conferir se pode excluir venda da sessão
         

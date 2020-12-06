@@ -11,6 +11,7 @@ import com.psoft.app.dao.PromocaoDao;
 import com.psoft.app.dao.VendaDao;
 import com.psoft.app.dao.VendedorDao;
 import com.psoft.app.model.Item;
+import com.psoft.app.model.NotaFiscal;
 import com.psoft.app.model.Produto;
 import com.psoft.app.model.TipoPagamento;
 import com.psoft.app.model.Venda;
@@ -23,6 +24,8 @@ public class VendaService implements ObservableLoja {
 
     @Autowired
     private PromocaoDao promocaoDao;
+
+    @Autowired NotaFiscalService notaFiscalService;
 
     //criar item para venda
 	public Venda criarItem(String codigo, Integer quantidade, Venda venda) {
@@ -74,8 +77,9 @@ public class VendaService implements ObservableLoja {
     @Autowired
     private ProdutoService produtoService;
     
-    public void salvarVenda(Venda venda){
+    public Venda salvarVenda(Venda venda){
         TipoPagamento tp = new TipoPagamento();
+        NotaFiscal notaFiscal = new NotaFiscal();
         tp.setId(1);
         venda.setTipoPagamento(tp);
         venda.getItens().forEach((item) -> item.setVenda(venda));
@@ -85,7 +89,9 @@ public class VendaService implements ObservableLoja {
         for(Item item : venda.getItens()){
             this.notifyObservers(item);
         } 
-
+        notaFiscal = notaFiscalService.gerarNotaFiscal(venda);
+        venda.setNotaFiscal(notaFiscal);
+        return venda;
     }
      @Override
        public void registerObserver(ObserverLoja observer) {

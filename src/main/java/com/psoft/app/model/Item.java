@@ -22,6 +22,8 @@ public class Item {
         this.quantidade = quantidade;
     }
 
+    private Item() {}
+
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY ) 
     @Column (name = "id")

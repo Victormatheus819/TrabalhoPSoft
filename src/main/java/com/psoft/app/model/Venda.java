@@ -53,7 +53,7 @@ public class Venda {
     
     @OneToOne
 	@JoinTable( name = "venda_nota", joinColumns = {@JoinColumn( name = "id_venda" )}, inverseJoinColumns = {@JoinColumn( name = "id_nota" )} )
-    private NotaFiscal notaFiscal;
+    @Getter @Setter private NotaFiscal notaFiscal;
     
     //Criar a instancia de item
     public void criarNovoItem(Produto produto, int quantidade) {

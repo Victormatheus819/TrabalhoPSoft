@@ -18,11 +18,12 @@
 		<div class="content">
       <div id="dadosNota">
         <h1>Compra finalizada!</h1>
-        <p>Cliente:</p>
-        <p>CPF:</p>
+        <p>Nota Fiscal: [[${venda?.notaFiscal?.codigo}]] </p>
+        <p>Cliente: [[${venda?.cliente?.nome}]] </p>
+        <p>CPF: [[${venda?.cliente?.cpf}]] </p>
         <p>Valor total da compra:</p>
         <p>Valor total com desconto:</p>
-        <p>Forma de pagamento:</p>
+        <p>Forma de pagamento: [[${venda?.tipoPagamento?.metodo}]] </p>
         <p>Valor pago:</p>
         <p>Pontos utilizados:</p>
         <p>Troco:</p>
