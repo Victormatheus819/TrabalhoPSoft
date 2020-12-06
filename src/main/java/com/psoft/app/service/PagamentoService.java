@@ -1,7 +1,6 @@
 package com.psoft.app.service;
 
 import com.psoft.app.dao.ClienteDao;
-import com.psoft.app.model.Cliente;
 import com.psoft.app.model.Item;
 import com.psoft.app.model.Venda;
 
@@ -26,16 +25,14 @@ public class PagamentoService {
         //setar tipo pagamento em venda
 		return venda;
     }
-    
-    public int addPontuacaoCliente(Venda venda){
-        int pontos = 0 ;
-        for(Item item : venda.getItens()){
-           pontos = (int) (pontos + (item.getProduto().getPreco()*item.getQuantidade()));
+
+    // calcular valor com desconto de pontuação para pagemento
+	public Double calcularDescontoComPontuacao(Double valorTotal, Integer pontos) {
+        if(pontos == null || pontos == 0){
+            return 0.0;
         }
-         pontos = (int) (pontos * 0.1);
-         
-        return pontos;
-        
-    }
+        int porcentagemDesconto = (pontos/100) * 10;
+        return valorTotal - (valorTotal * (porcentagemDesconto/100.0));
+	}
 
 }

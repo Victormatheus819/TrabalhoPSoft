@@ -56,7 +56,19 @@ public class VendaService implements ObservableLoja {
     public Venda adicionarVendedor(Venda venda, Integer idVendedor) {
         venda.setVendedor( this.vendedorDao.findById(idVendedor).get());
         return venda;
-	}
+    }
+    
+    //calcular pontuação gerada pela venda
+    public int calcularPontuacaoDaVenda(Venda venda){
+        int pontos = 0 ;
+        for(Item item : venda.getItens()){
+           pontos = (int) (pontos + (item.getProduto().getPreco()*item.getQuantidade()));
+        }
+         pontos = (int) (pontos * 0.1);
+         
+        return pontos;
+        
+    }
 
 
     

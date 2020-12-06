@@ -21,13 +21,15 @@
         <h1 th:inline="text"> CPF do cliente: [[${session.venda.cliente.cpf}]]</h1>
         <h1 th:inline="text"> Pontuação: [[${session.venda.cliente.pontos}]]</h1>
         <h1 th:inline="text">Valor total: [[${valorTotal}]]</h1>
-        <h1 th:if="${session.venda.cliente.preferencial}" th:inline="text">Pontuação gerada com a compra:[[${pontos}]] </h1>
+        <h1 th:if="${session.venda.cliente.preferencial}" th:inline="text">Pontuação gerada com a compra:[[${pontosDaVenda}]] </h1>
         
         <hr>
         
-        <label for="desconto" th:if="${session.venda.cliente.preferencial}"><input type="checkbox" id="desconto" name="desconto" value="Sim">Utilizar o desconto</label>
+        <label for="desconto" th:if="${session.venda.cliente.preferencial}">
+          <input type="checkbox" id="desconto" name="desconto" value="Sim">Utilizar o desconto
+        </label>
 
-        <h1 th:if="${session.venda.cliente.preferencial}">Valor com desconto de pontuação acumulada:</h1>
+        <h1 th:if="${session.venda.cliente.preferencial}">Valor com desconto de pontuação acumulada: [[${valorComDesconto}]]</h1>
         
         <hr>
 
@@ -38,9 +40,9 @@
         <div id="pagamentoOpcao">
           <label for="pagamento">Forma de pagamento:</label>
           <select id="formaPagamento" name="formaPagamento">
-            <option value="dinheiro">Dinheiro</option>
-            <option value="debito">Cartão de Débito</option>
-            <option value="credito">Cartão de Crédito</option>
+            <option value="1">Dinheiro</option>
+            <option value="2">Cartão de Débito</option>
+            <option value="3">Cartão de Crédito</option>
           </select>
 
           <input type="text" id="valor" placeholder="Valor pago">

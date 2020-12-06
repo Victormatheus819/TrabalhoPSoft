@@ -18,14 +18,11 @@
 		<div class="content">
       <div id="dadosNota">
         <h1>Compra finalizada!</h1>
-        <p>Cliente:</p>
-        <p>CPF:</p>
-        <p>Valor total da compra:</p>
-        <p>Valor total com desconto:</p>
-        <p>Forma de pagamento:</p>
-        <p>Valor pago:</p>
-        <p>Pontos utilizados:</p>
-        <p>Troco:</p>
+        <p th:inline="text">Nota Fiscal: [[${venda.notaFiscal.codigo}]] </p>
+        <p th:inline="text">Cliente: [[${venda.cliente.nome}]]</p>
+        <p th:inline="text">CPF: [[${venda.cliente.cpf}]]</p>
+        <p th:inline="text">Forma de pagamento: [[${venda.tipoPagamento.nome}]]</p>
+        <p th:inline="text">Valor da compra: [[${venda.notaFiscal.codigo}]]</p>
       </div>
 
       <form method="GET" th:action="@{/venda}">
