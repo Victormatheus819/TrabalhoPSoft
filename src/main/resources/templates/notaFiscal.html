@@ -22,7 +22,7 @@
         <p th:inline="text">Cliente: [[${venda.cliente.nome}]]</p>
         <p th:inline="text">CPF: [[${venda.cliente.cpf}]]</p>
         <p th:inline="text">Forma de pagamento: [[${venda.tipoPagamento.metodo}]]</p>
-        <p th:inline="text">Valor da compra: [[${venda.notaFiscal.codigo}]]</p>
+        <p th:inline="text">Valor da compra: [[${valorTotal}]]</p>
       </div>
 
       <form method="GET" th:action="@{/venda}">

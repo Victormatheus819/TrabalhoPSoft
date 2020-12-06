@@ -7,6 +7,7 @@ import com.psoft.app.model.Produto;
 import com.psoft.app.model.Venda;
 import com.psoft.app.service.ClienteService;
 import com.psoft.app.service.LoginService;
+import com.psoft.app.service.NotaFiscalService;
 import com.psoft.app.service.PagamentoService;
 import com.psoft.app.service.VendaService;
 
@@ -106,7 +107,7 @@ public class VendaController {
 
     //salvar informações de venda que acaba de ser concluída
     @PostMapping("/confirmarPagamentoVenda")
-    public ModelAndView concluirVenda(HttpSession session, @RequestParam(value ="formaPagamento") Integer formaPagamento, @RequestParam(value ="valorTotal") String valorTotal ){
+    public ModelAndView concluirVenda(HttpSession session, @RequestParam(value ="formaPagamento") Integer formaPagamento, @RequestParam(value ="valorTotal") String valorTotal){
         ModelAndView mv = new ModelAndView("notaFiscal");
         Venda vendaAtual = this.pagamentoService.addTipoPagamento((Venda) session.getAttribute("venda"), formaPagamento);
 
@@ -117,6 +118,8 @@ public class VendaController {
 
         session.removeAttribute("venda");
         mv.addObject("venda", vendaAtual);
+
+        mv.addObject("valorTotal", valorTotal);
         
         return mv;
     }

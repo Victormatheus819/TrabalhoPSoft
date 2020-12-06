@@ -30,6 +30,7 @@
         </label>
 
         <h1 th:if="${session.venda.cliente.preferencial}">Valor com desconto de pontuação acumulada: [[${valorComDesconto}]]</h1>
+        <input type="hidden" id="valorDesconto" name="valorTotal" th:attr="value = ${valorComDesconto}">
         
         <hr>
 

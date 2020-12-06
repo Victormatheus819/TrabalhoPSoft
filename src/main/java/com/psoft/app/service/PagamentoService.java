@@ -1,7 +1,6 @@
 package com.psoft.app.service;
 
 import com.psoft.app.dao.TipoPagamentoDao;
-import com.psoft.app.dao.ClienteDao;
 import com.psoft.app.model.Item;
 import com.psoft.app.model.TipoPagamento;
 import com.psoft.app.model.Venda;
@@ -21,7 +20,7 @@ public class PagamentoService {
 		for(Item item : venda.getItens()){
             valor = valor + (item.getProduto().getPreco() * item.getQuantidade());
         }
-        return valor;
+        return Math.round(valor * 100.0)/100.0;
     }
 
 	public Venda addTipoPagamento(Venda venda, Integer formaPagamento) {
@@ -36,7 +35,8 @@ public class PagamentoService {
             return 0.0;
         }
         int porcentagemDesconto = (pontos/100) * 10;
-        return valorTotal - (valorTotal * (porcentagemDesconto/100.0));
+        valorTotal = valorTotal - (valorTotal * (porcentagemDesconto/100.0));
+        return Math.round(valorTotal * 100.0)/100.0;
 	}
 
 }

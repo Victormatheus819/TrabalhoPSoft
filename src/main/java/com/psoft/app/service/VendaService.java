@@ -87,9 +87,6 @@ public class VendaService implements ObservableLoja {
     private ProdutoService produtoService;
     
     public void salvarVenda(Venda venda){
-        TipoPagamento tp = new TipoPagamento();
-        tp.setId(1);
-        venda.setTipoPagamento(tp);
         venda.getItens().forEach((item) -> item.setVenda(venda));
         venda.setData(new Date());
         vendaDao.save(venda);
