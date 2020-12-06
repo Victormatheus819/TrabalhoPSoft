@@ -94,6 +94,7 @@ public class VendaController {
 
         Double valorTotal = this.pagamentoService.calcularValorTotal(vendaAtual);
         mv.addObject("valorTotal", valorTotal);
+        mv.addObject("pontos",pagamentoService.addPontuacaoCliente(vendaAtual));
 
         // calcular valor com desconto de pontos
 
@@ -110,6 +111,8 @@ public class VendaController {
         vendaAtual = this.vendaService.adicionarVendedor(vendaAtual, (Integer) session.getAttribute("idUsuario"));
         
         vendaService.salvarVenda(vendaAtual);
+
+        
 
         //conferir se pode excluir venda da sessão
         

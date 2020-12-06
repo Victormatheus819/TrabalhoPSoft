@@ -1,7 +1,5 @@
 package com.psoft.app.service;
 
-import java.util.List;
-
 import com.psoft.app.dao.TipoPagamentoDao;
 import com.psoft.app.model.Item;
 import com.psoft.app.model.TipoPagamento;
@@ -29,6 +27,17 @@ public class PagamentoService {
         TipoPagamento tipoPagamento = tp.findById(formaPagamento).get();
         venda.setTipoPagamento(tipoPagamento);
 		return venda;
-	}
+    }
+    
+    public int addPontuacaoCliente(Venda venda){
+        int pontos = 0 ;
+        for(Item item : venda.getItens()){
+           pontos = (int) (pontos + (item.getProduto().getPreco()*item.getQuantidade()));
+        }
+         pontos = (int) (pontos * 0.1);
+         
+        return pontos;
+        
+    }
 
 }

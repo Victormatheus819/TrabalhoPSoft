@@ -21,7 +21,7 @@
         <h1 th:inline="text"> CPF do cliente: [[${session.venda.cliente.cpf}]]</h1>
         <h1 th:inline="text"> Pontuação: [[${session.venda.cliente.pontos}]]</h1>
         <h1 th:inline="text">Valor total: [[${valorTotal}]]</h1>
-        <h1 th:if="${session.venda.cliente.preferencial}">Pontuação gerada com a compra:</h1>
+        <h1 th:if="${session.venda.cliente.preferencial}" th:inline="text">Pontuação gerada com a compra:[[${pontos}]] </h1>
         
         <hr>
         
