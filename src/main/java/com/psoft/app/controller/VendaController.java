@@ -103,9 +103,9 @@ public class VendaController {
     }
 
     @PostMapping("/confirmarPagamentoVenda")
-    public ModelAndView concluirVenda(HttpSession session, @RequestParam(value ="formaPagamento") String formaPagamento, @RequestParam(value ="valorTotal") String valorTotal ){
+    public ModelAndView concluirVenda(HttpSession session, @RequestParam(value ="formaPagamento") Integer formaPagamento, @RequestParam(value ="valorTotal") String valorTotal ){
         ModelAndView mv = new ModelAndView("notaFiscal");
-        Venda vendaAtual = this.pagamentoService.addTipoPagamento((Venda) session.getAttribute("venda"));
+        Venda vendaAtual = this.pagamentoService.addTipoPagamento((Venda) session.getAttribute("venda"), formaPagamento);
 
         vendaAtual = this.vendaService.adicionarVendedor(vendaAtual, (Integer) session.getAttribute("idUsuario"));
         

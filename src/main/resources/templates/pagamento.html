@@ -38,16 +38,16 @@
         <div id="pagamentoOpcao">
           <label for="pagamento">Forma de pagamento:</label>
           <select id="formaPagamento" name="formaPagamento">
-            <option value="dinheiro">Dinheiro</option>
-            <option value="debito">Cartão de Débito</option>
-            <option value="credito">Cartão de Crédito</option>
+            <option value="1">Cartão de Débito</option>
+            <option value="2">Cartão de Crédito</option>
+            <option value="3">Dinheiro</option>
           </select>
 
-          <input type="text" id="valor" placeholder="Valor pago">
+          <input type="text" id="valorPago" placeholder="Valor pago">
         </div>
 
         <h1>Troco: Calcular no front</h1>
-        <input type="hidden" name="valorTotal" th:attr="value = ${valorTotal}">
+        <input type="hidden" id="valorTotal" name="valorTotal" th:attr="value = ${valorTotal}">
         
       
 
