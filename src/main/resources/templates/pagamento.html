@@ -16,12 +16,14 @@
   <header>Sistema de controle de vendas - Pagamento</header>
 	<div class="container">
 		<div class="content">
+      <form id="pagamentoForm" th:action="@{/confirmarPagamentoVenda}" method="POST">
       <div id="dadosPagamento">
         <h1 th:inline="text">Nome do Cliente: [[${session.venda.cliente.nome}]]</h1>
         <h1 th:inline="text"> CPF do cliente: [[${session.venda.cliente.cpf}]]</h1>
         <h1 th:inline="text"> Pontuação: [[${session.venda.cliente.pontos}]]</h1>
         <h1 th:inline="text">Valor total: [[${valorTotal}]]</h1>
         <h1 th:if="${session.venda.cliente.preferencial}" th:inline="text">Pontuação gerada com a compra:[[${pontosDaVenda}]] </h1>
+        <input type="hidden" id="pontos" name="pontos" th:attr="value = ${pontosDaVenda}">
         
         <hr>
         
@@ -30,14 +32,14 @@
         </label>
 
         <h1 th:if="${session.venda.cliente.preferencial}">Valor com desconto de pontuação acumulada: [[${valorComDesconto}]]</h1>
-        <input type="hidden" id="valorDesconto" name="valorTotal" th:attr="value = ${valorComDesconto}">
+        <input type="hidden" id="valorDesconto" name="valorDesconto" th:attr="value = ${valorComDesconto}">
         
         <hr>
 
         
       </div>
 
-      <form id="pagamentoForm" th:action="@{/confirmarPagamentoVenda}" method="POST">
+      
         <div id="pagamentoOpcao">
           <label for="pagamento">Forma de pagamento:</label>
           <select id="formaPagamento" name="formaPagamento">

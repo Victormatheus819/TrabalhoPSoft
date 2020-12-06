@@ -107,7 +107,8 @@ public class VendaController {
 
     //salvar informações de venda que acaba de ser concluída
     @PostMapping("/confirmarPagamentoVenda")
-    public ModelAndView concluirVenda(HttpSession session, @RequestParam(value ="formaPagamento") Integer formaPagamento, @RequestParam(value ="valorTotal") String valorTotal){
+    public ModelAndView concluirVenda(HttpSession session, @RequestParam(value ="formaPagamento") Integer formaPagamento, @RequestParam(value ="valorTotal") String valorTotal, 
+    @RequestParam(value ="desconto", required = false) String desconto, @RequestParam(value ="valorDesconto") String valorDesconto, @RequestParam(value ="pontos") Integer pontos){
         ModelAndView mv = new ModelAndView("notaFiscal");
         Venda vendaAtual = this.pagamentoService.addTipoPagamento((Venda) session.getAttribute("venda"), formaPagamento);
 
@@ -119,7 +120,17 @@ public class VendaController {
         session.removeAttribute("venda");
         mv.addObject("venda", vendaAtual);
 
-        mv.addObject("valorTotal", valorTotal);
+        if(vendaAtual.getCliente().getPreferencial()){
+            this.clienteService.addPontos(vendaAtual.getCliente(), pontos);
+        }
+
+        if(desconto != null){
+            mv.addObject("valorTotal", valorDesconto);
+            this.clienteService.removerPontos(vendaAtual.getCliente());
+        }else{
+            mv.addObject("valorTotal", valorTotal);
+
+        }
         
         return mv;
     }

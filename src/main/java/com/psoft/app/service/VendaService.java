@@ -12,7 +12,6 @@ import com.psoft.app.dao.VendaDao;
 import com.psoft.app.dao.VendedorDao;
 import com.psoft.app.model.Item;
 import com.psoft.app.model.Produto;
-import com.psoft.app.model.TipoPagamento;
 import com.psoft.app.model.Venda;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +71,7 @@ public class VendaService implements ObservableLoja {
 
 
     
-    private List<ObserverLoja> observers = new ArrayList();
+    private List<ObserverLoja> observers = new ArrayList<ObserverLoja>();
     
     @Autowired
     private ProdutoDao produtoDao;

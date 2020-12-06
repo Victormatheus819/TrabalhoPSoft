@@ -41,5 +41,22 @@ public class ClienteService {
        dao.deleteById(id);
    }
 
+    public void removerPontos(Cliente cliente) {
+        Integer pontos = cliente.getPontos();
+        if(pontos == null || pontos < 100){
+            return;
+        }
+
+        pontos = pontos - 100 * (pontos/100);
+        cliente.setPontos(pontos);
+        this.dao.save(cliente);
+        return;
+    }
+
+	public void addPontos(Cliente cliente, Integer pontosVenda) {
+        cliente.setPontos(cliente.getPontos() + pontosVenda);
+        this.dao.save(cliente);
+	}
+
 
 }
