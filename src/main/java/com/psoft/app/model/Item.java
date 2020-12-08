@@ -17,10 +17,6 @@ import lombok.Setter;
 @Table (name="item")
 public class Item {
 
-    public Item(){
-        
-    }
-
     public Item(Produto produto, int quantidade){
         this.produto = produto;
         this.quantidade = quantidade;
