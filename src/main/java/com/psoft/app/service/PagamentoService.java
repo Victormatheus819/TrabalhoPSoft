@@ -10,9 +10,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PagamentoService {
-
-    @Autowired
-    private TipoPagamentoDao tp;
     
     // calcualr valor total a ser pago de uma venda
     public Double calcularValorTotal(Venda venda) {
@@ -24,7 +21,7 @@ public class PagamentoService {
     }
 
 	public Venda addTipoPagamento(Venda venda, Integer formaPagamento) {
-        TipoPagamento tipoPagamento = tp.findById(formaPagamento).get();
+        TipoPagamento tipoPagamento = this.tipoPagamentoDao.findById(formaPagamento).get();
         venda.setTipoPagamento(tipoPagamento);
 		return venda;
     }
@@ -37,6 +34,9 @@ public class PagamentoService {
         int porcentagemDesconto = (pontos/100) * 10;
         valorTotal = valorTotal - (valorTotal * (porcentagemDesconto/100.0));
         return Math.round(valorTotal * 100.0)/100.0;
-	}
+    }
+    
+    @Autowired
+    private TipoPagamentoDao tipoPagamentoDao;
 
 }

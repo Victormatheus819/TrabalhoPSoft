@@ -1,2 +1,0 @@
-ALTER TABLE IF EXISTS nota_fiscal
-	ADD data  DATE NOT NULL;

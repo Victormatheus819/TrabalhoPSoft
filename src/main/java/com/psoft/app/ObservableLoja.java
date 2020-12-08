@@ -2,6 +2,7 @@ package com.psoft.app;
 
 import com.psoft.app.model.Item;
 
+//interface observável  para observer
 public interface ObservableLoja {
 
     

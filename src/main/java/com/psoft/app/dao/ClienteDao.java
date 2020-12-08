@@ -7,5 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ClienteDao extends JpaRepository<Cliente,Integer> {
+
+    // query para recuperar cliente por CPF
     Cliente findByCpf(String cpf);
 }

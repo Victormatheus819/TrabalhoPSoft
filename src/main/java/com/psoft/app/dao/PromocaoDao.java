@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PromocaoDao extends JpaRepository<Promocao,Integer>  {
 
+    // query para recuperar promocao de um produto
     @Query( value = "SELECT porcentagem_desconto FROM promocao WHERE data_inicial < now() AND data_final > now() AND id_produto = :id", nativeQuery = true)
 	Double getToProduto(@Param("id") Integer id);
     

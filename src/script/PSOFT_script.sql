@@ -26,9 +26,9 @@ CREATE TABLE gerente
 (
     id SERIAL NOT NULL,
     nome VARCHAR(50) NOT NULL,
-    codigo INTEGER NOT NULL,
+    codigo VARCHAR(50) NOT NULL,
     senha VARCHAR(50) NOT NULL,
-    ativo BIT NOT NULL,
+    ativo BOOLEAN NOT NULL,
     CONSTRAINT PK_gerente PRIMARY KEY (id)
 );
 
@@ -37,9 +37,9 @@ CREATE TABLE vendedor
 (
     id SERIAL NOT NULL,
     nome VARCHAR(50) NOT NULL,
-    codigo INTEGER NOT NULL,
+    codigo VARCHAR(50) NOT NULL,
     senha VARCHAR(50) NOT NULL,
-    ativo BIT NOT NULL,
+    ativo BOOLEAN NOT NULL,
     CONSTRAINT PK_vendedor PRIMARY KEY (id)
 );
 
@@ -48,11 +48,11 @@ CREATE TABLE cliente
 (
 	id SERIAL NOT NULL,
     nome VARCHAR(50),
-	cpf INTEGER NOT NULL,
+	cpf VARCHAR(50) NOT NULL,
 	email VARCHAR(50) NOT NULL,
 	endereco VARCHAR(50) NULL,
 	identidade VARCHAR(50) NOT NULL,
-	preferencial BIT NOT NULL,
+    preferencial BOOLEAN NOT NULL,
 	pontos INTEGER NULL,
 	CONSTRAINT PK_cliente PRIMARY KEY (id)
 );
@@ -62,7 +62,7 @@ CREATE TABLE produto
 (
     id SERIAL NOT NULL,
     nome VARCHAR(50) NOT NULL,
-    codigo_identificacao INTEGER NOT NULL,
+    codigo_identificacao VARCHAR(50) NOT NULL,
     codigo_barras VARCHAR(50) NOT NULL,
     quantidade_estoque INTEGER NULL,
     preco DECIMAL,
@@ -76,6 +76,7 @@ CREATE TABLE promocao
 	id_produto INTEGER NOT NULL,
 	data_inicial DATE NOT NULL,
 	data_final DATE NULL,
+    porcentagem_desconto DECIMAL NOT NULL,
 	CONSTRAINT PK_promocao PRIMARY KEY (id),
 	CONSTRAINT FK_promocao_X_produto FOREIGN KEY (id_produto) REFERENCES produto(id)
 );
@@ -94,7 +95,8 @@ CREATE TABLE reclamacao
 create table nota_fiscal 
 (
     id SERIAL NOT NULL,
-    codigo INTEGER NOT NULL,
+    codigo VARCHAR(50) NOT NULL,
+    data  DATE NOT NULL,
     CONSTRAINT PK_nota_fiscal PRIMARY KEY (id)
 );
 
@@ -127,6 +129,8 @@ CREATE TABLE item
     id SERIAL NOT NULL,
     id_produto INTEGER NOT NULL,
     quantidade INTEGER NOT NULL,
+    id_venda INTEGER NOT NULL,
+	CONSTRAINT FK_item_X_venda FOREIGN KEY (id_venda) REFERENCES venda(id);
     CONSTRAINT FK_item_X_produto FOREIGN KEY (id_produto) REFERENCES produto(id),
     CONSTRAINT PK_item PRIMARY KEY (id)
 );
@@ -155,7 +159,7 @@ CREATE TABLE troca_item
 (
     id_troca INTEGER NOT NULL,
     id_item INTEGER NOT NULL,
-    CONSTRAINT FK_troca_X_item FOREIGN KEY (id_troca) REFERENCES cliente(id),
+    CONSTRAINT FK_troca_X_item FOREIGN KEY (id_troca) REFERENCES troca(id),
 	CONSTRAINT FK_item_X_troca FOREIGN KEY (id_item) REFERENCES item(id)
 );
 
@@ -166,15 +170,6 @@ CREATE TABLE fornecedor
     nome VARCHAR(50) NOT NULL,
     endereco VARCHAR (50) NOT NULL,
     CONSTRAINT PK_fornecedor PRIMARY KEY (id)
-);
-
--- criacao tabela item_venda
-CREATE TABLE item_venda
-(
-    id_venda INTEGER NOT NULL,
-    id_item INTEGER NOT NULL,
-    CONSTRAINT FK_venda_X_item FOREIGN KEY (id_venda) REFERENCES venda(id),
-	CONSTRAINT FK_item_X_venda FOREIGN KEY (id_item) REFERENCES item(id)
 );
 
 -- criacao tabela troca_nota

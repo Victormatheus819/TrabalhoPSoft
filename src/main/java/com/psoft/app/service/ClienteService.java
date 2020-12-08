@@ -1,6 +1,5 @@
 package com.psoft.app.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import com.psoft.app.model.Cliente;
@@ -13,34 +12,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class ClienteService {
     
-    @Autowired
-    private ClienteDao dao;
-
+    // recuperar cliente pelo CPF
     public Cliente getClienteByCpf(String cpf){
-        Cliente cliente = this.dao.findByCpf(cpf);
+        Cliente cliente = this.clienteDao.findByCpf(cpf);
         return cliente;
     }
 
-    public List<Cliente> getAllClients() {
-        return dao.findAll();
-    }
-
+    // recuperar Cliente pelo id
     public Optional<Cliente> getClient(int id){
-        return dao.findById(id);
+        return this.clienteDao.findById(id);
     }
 
-   public void addClient(Cliente cliente){
-       dao.save(cliente);
-   } 
-
-   public void updateClient(int id,Cliente cliente){
-       dao.save(cliente);
-   }
-    
-   public void deleteClient(Integer id){
-       dao.deleteById(id);
-   }
-
+    // remover pontos de um cliente
     public void removerPontos(Cliente cliente) {
         Integer pontos = cliente.getPontos();
         if(pontos == null || pontos < 100){
@@ -49,14 +32,19 @@ public class ClienteService {
 
         pontos = pontos - 100 * (pontos/100);
         cliente.setPontos(pontos);
-        this.dao.save(cliente);
+        this.clienteDao.save(cliente);
         return;
     }
 
+    // adicionar pontos de um cliente
 	public void addPontos(Cliente cliente, Integer pontosVenda) {
         cliente.setPontos(cliente.getPontos() + pontosVenda);
-        this.dao.save(cliente);
-	}
+        this.clienteDao.save(cliente);
+    }
+    
+    
+    @Autowired
+    private ClienteDao clienteDao;
 
 
 }

@@ -57,7 +57,7 @@ public class VendaService implements ObservableLoja {
         return venda;
     }
     
-    //calcular pontuação gerada pela venda
+    // calcular pontuação gerada pela venda
     public int calcularPontuacaoDaVenda(Venda venda){
         int pontos = 0 ;
         for(Item item : venda.getItens()){
@@ -68,9 +68,41 @@ public class VendaService implements ObservableLoja {
         return pontos;
         
     }
-
-
     
+    // salvar venda e os atrelados a ela no banco
+    public void salvarVenda(Venda venda){
+        venda.getItens().forEach((item) -> item.setVenda(venda));
+        venda.setData(new Date());
+        vendaDao.save(venda);
+        this.registerObserver(produtoService);
+        for(Item item : venda.getItens()){
+            this.notifyObservers(item);
+        } 
+
+    }
+
+    // metodo sobre-escrito do Observer
+    @Override
+    public void registerObserver(ObserverLoja observer) {
+        observers.add(observer);
+    }
+ 
+    // metodo sobre-escrito do Observer
+    @Override
+    public void removeObserver(ObserverLoja observer) {
+        observers.remove(observer);
+    }
+ 
+    // metodo sobre-escrito do Observer
+    @Override
+    public void notifyObservers(Item item) {
+        for (ObserverLoja ob : observers) {
+            System.out.println("Notificando observers!");
+            ob.update(item);
+        }
+    }
+
+    // variavel para implementação do Observer
     private List<ObserverLoja> observers = new ArrayList<ObserverLoja>();
     
     @Autowired
@@ -84,33 +116,5 @@ public class VendaService implements ObservableLoja {
     
     @Autowired
     private ProdutoService produtoService;
-    
-    public void salvarVenda(Venda venda){
-        venda.getItens().forEach((item) -> item.setVenda(venda));
-        venda.setData(new Date());
-        vendaDao.save(venda);
-        this.registerObserver(produtoService);
-        for(Item item : venda.getItens()){
-            this.notifyObservers(item);
-        } 
-
-    }
-     @Override
-       public void registerObserver(ObserverLoja observer) {
-            observers.add(observer);
-       }
- 
-       @Override
-       public void removeObserver(ObserverLoja observer) {
-            observers.remove(observer);
-       }
- 
-       @Override
-       public void notifyObservers(Item item) {
-            for (ObserverLoja ob : observers) {
-            System.out.println("Notificando observers!");
-              ob.update(item);
-            }
-       }
     
 }

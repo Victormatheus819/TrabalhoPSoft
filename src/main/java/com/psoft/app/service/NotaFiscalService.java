@@ -27,6 +27,7 @@ public class NotaFiscalService {
         return nota;
     }
 
+    // gerar código de nota fiscal
     private String gerarCodigo(Venda venda) {
 		String codigo = "000";
 		codigo += venda.getVendedor().getCodigo();

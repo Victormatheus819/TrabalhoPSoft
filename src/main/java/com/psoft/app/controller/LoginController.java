@@ -58,6 +58,7 @@ public class LoginController {
         return mv;
     }
 
+    // ativar sistema
     @GetMapping("/ativarSistema")
     public ModelAndView redirecionarIndex( HttpSession session ){
         ModelAndView mv = new ModelAndView();
@@ -66,6 +67,7 @@ public class LoginController {
         return mv;
     }
 
+    // realizar autenticação
     @GetMapping("/login")
     public ModelAndView redirecionarLogin( HttpSession session ){
         ModelAndView mv = new ModelAndView();
@@ -76,6 +78,5 @@ public class LoginController {
 
     @Autowired
     private LoginService loginService;
-
 
 }

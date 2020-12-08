@@ -24,14 +24,14 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class VendaController {
     
-    //mapeamento Get para interface venda
+    // mapeamento Get para interface venda
     @GetMapping ("/venda")
     public String venda (HttpSession session){
         session.setAttribute("venda", new Venda());
         return "venda";
     }
 
-    //criar novo item e adicionara a variável de sessão
+    // criar novo item e adicionara a variável de sessão
     @GetMapping("/criaItem/{codigo}/{quantidade}")
     @ResponseBody
     public Produto criarItem(@PathVariable( value = "codigo" ) final String codigo, @PathVariable( value = "quantidade" ) final Integer quantidade, HttpSession session){

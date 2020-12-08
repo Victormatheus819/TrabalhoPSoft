@@ -15,6 +15,7 @@ public class ProdutoService implements ObserverLoja  {
     @Autowired
     private ProdutoDao produtoDao;
     
+    // salvar valores atualizados de estoque
     @Override
     @Transactional
     public void update(Item item) {

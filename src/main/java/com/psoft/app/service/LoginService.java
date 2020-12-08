@@ -11,12 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginService {
 
-    @Autowired
-    private GerenteDao gerenteDao;
-
-    @Autowired
-    private VendedorDao vendedorDao;
-
+    // verificar se o sistema está Ativo
     public Boolean sistemaAtivo(final String codigo, final String senha){
         if(this.gerenteDao.findByCodigoAndSenhaAndAtivo(codigo, senha, true) == null){
             return false;
@@ -24,6 +19,7 @@ public class LoginService {
         return true;
     }
 
+    // recuperar o id do usuário que está logando
 	public Integer getIdUsuarioAutenticacao(String tipoUsuario, String codigo, String senha) {
         if(contemNumero(codigo)){
             if(tipoUsuario.equals("vendedor")){
@@ -54,6 +50,7 @@ public class LoginService {
 		return null;
 	}
 
+    // verificar se String contêm número
     private boolean contemNumero(String texto){
         for ( int i = 0; i < texto.length(); i++ ){
             if ( Character.isDigit( texto.charAt(i)) ) {
@@ -69,6 +66,12 @@ public class LoginService {
                 return true;
             }
 		return false;
-	}
+    }
+    
+    @Autowired
+    private GerenteDao gerenteDao;
+
+    @Autowired
+    private VendedorDao vendedorDao;
 
 }
