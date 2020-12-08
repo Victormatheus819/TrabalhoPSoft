@@ -1,8 +1,10 @@
+var subTotal = 0;
+
 function adicionarItem(venda) {
   var codigo = document.getElementById("codigo").value;
   var quant = document.getElementById("quant").value;
   var sub  = document.getElementById('subtotal');
-  var c= 0;
+  
   if(quant == ""){
     quant = "1";
   }
@@ -30,9 +32,9 @@ function adicionarItem(venda) {
           cel2.innerHTML = data.nome;
           cel3.innerHTML = data.preco;
           cel4.innerHTML = '<button id="excluir" type="reset" onclick="excluirItem(this, ' + data.codigoBarras + ')">Excluir</button>'
-          c= c + data.preco;
+          subTotal += data.preco;
         }
-        sub.innerHTML= c;
+        sub.innerHTML = subTotal;
         console.log(c);
       },
       error : function() {
