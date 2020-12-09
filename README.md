@@ -1,7 +1,7 @@
 # 1. Compilação do código
 
 Para rodar a aplicação vá até o arquivo PsoftApplication e aperte o botão de play no lado superior direito do VSCode, depois vá até o seu navegador e digite na barra de busca localhost:8080/.
-Para o projeto usamos no VSCode usamos as seguintes extensões:
+Para o projeto usamos no VSCode ( link de download: https://code.visualstudio.com/download ) usamos as seguintes extensões:
  
  :small_blue_diamond: Spring Boot Extension Pack
 
@@ -10,7 +10,9 @@ Para o projeto usamos no VSCode usamos as seguintes extensões:
  :small_blue_diamond: Lombok Annotations Support for VS Code
 
 ## 1.2-Banco de dados
-Para a parte de banco de dados usamos o postgreSQL, para  criar o banco em sua máquina é preciso abrir o arquivo contido na pasta script do projeto no PgAdmin e rodá-lo.
+Para a parte de banco de dados usamos o postgreSQL ( link de download: https://www.enterprisedb.com/downloads/postgres-postgresql-downloads )
+
+Para criar o banco em sua máquina é preciso abrir o arquivo contido na pasta script do projeto no PgAdmin e rodá-lo. Para mais esclarecimentos leia os comentários presente no arquivo de script.
 
 # 2. Estrutura do código
 O projeto é inicialmente dividido em 2 pastas, a script, contendo o arquivo de criação de banco de dados, e a main, onde está o código da aplicação de fato.

@@ -1,10 +1,15 @@
--- Ser executado somente se não tiver sido criado o usuario 'postgres' 
+-- Ser executado somente se não tiver sido criado o usuario 'postgres'
+-- SOMENTE CASO NÃO TENHA INSTALDO O POSTGRES PELA INSTALAÇÃO PADRÃO     
 CREATE USER postgres WITH PASSWORD 'postgres';
 --
 
--- Ser executado somente se já tiver sido criado o usuario 'postgres' 
+-- Ser executado somente se já tiver sido criado o usuario 'postgres' (usuário criado na instalação padrão do postgres)
+-- AO ALTERAR O USUÁRIO, A SENHA PARA ACESSAR O pgAdmin TAMBÉM SERÀ ALTERADA
 ALTER USER postgres WITH PASSWORD 'postgres';
 --
+
+-- CASO NÂO QUEIRA CRIAR OU ALTERAR O USUÁRIO DO POSTGRES, PODE ALTERAR AS CONFIGURAÇÕES DO BANCO NO ARQUIVO 'aplication.properties'
+
 
 -- criacao da DATABASE necessária para a aplicação
 CREATE DATABASE "trabalhoPSOFT"
@@ -12,6 +17,11 @@ CREATE DATABASE "trabalhoPSOFT"
     OWNER = postgres
     ENCODING = 'UTF8'
     CONNECTION LIMIT = -1;
+
+
+
+-- ALGUMAS VERSÕES DO POSTGRES NÃO UTILIZA POR DEFAULT A BASE DE DADOS RECÉM CRIADA
+-- PARA NÃO HAVER ERROS, O MAIS RECOMENDADO É RODAR O RESTANTE DO SCRIPT ABAIXO DEPOIS DE CRIAR A DATABASE E SELECIONÁ-LA
 
 -- criacao tabela de versionamento
 CREATE TABLE db_version
@@ -130,7 +140,7 @@ CREATE TABLE item
     id_produto INTEGER NOT NULL,
     quantidade INTEGER NOT NULL,
     id_venda INTEGER NOT NULL,
-	CONSTRAINT FK_item_X_venda FOREIGN KEY (id_venda) REFERENCES venda(id);
+	CONSTRAINT FK_item_X_venda FOREIGN KEY (id_venda) REFERENCES venda(id),
     CONSTRAINT FK_item_X_produto FOREIGN KEY (id_produto) REFERENCES produto(id),
     CONSTRAINT PK_item PRIMARY KEY (id)
 );
